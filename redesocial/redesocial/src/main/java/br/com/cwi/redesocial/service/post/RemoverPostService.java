@@ -4,6 +4,7 @@ import br.com.cwi.redesocial.domain.Post;
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.repository.PostRepository;
 import br.com.cwi.redesocial.service.usuario.UsuarioAutenticadoService;
+import br.com.cwi.redesocial.validator.post.UsuarioDonoPostValidator;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class RemoverPostService {
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
     @Autowired
-    private UsuarioDonoPostService usuarioDonoPostService;
+    private UsuarioDonoPostValidator usuarioDonoPostValidator;
 
     @Transactional
     public void remover(long id) {
@@ -29,7 +30,7 @@ public class RemoverPostService {
 
         Usuario usuario = usuarioAutenticadoService.get();
 
-        usuarioDonoPostService.validator(usuario, post);
+        usuarioDonoPostValidator.validator(usuario, post);
 
         post.setAtivo(false);
 

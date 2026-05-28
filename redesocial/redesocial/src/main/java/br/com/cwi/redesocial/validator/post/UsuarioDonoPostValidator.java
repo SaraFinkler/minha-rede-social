@@ -1,18 +1,13 @@
-package br.com.cwi.redesocial.service.post;
+package br.com.cwi.redesocial.validator.post;
 
 import br.com.cwi.redesocial.domain.Post;
 import br.com.cwi.redesocial.domain.Usuario;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
-@Service
-public class UsuarioDonoPostService {
-
-    @Autowired
-    private UsuarioDonoPostService usuarioDonoPostService;
-
+@Component
+public class UsuarioDonoPostValidator {
     public void validator(Usuario usuario, Post post) {
         if (post.getUsuario() != usuario) {
             throw new ResponseStatusException(
