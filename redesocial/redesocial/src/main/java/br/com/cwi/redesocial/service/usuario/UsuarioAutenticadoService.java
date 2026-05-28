@@ -2,6 +2,7 @@ package br.com.cwi.redesocial.service.usuario;
 
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.jwt.Jwt;
@@ -13,11 +14,8 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 @Service
 public class UsuarioAutenticadoService {
 
-    private final UsuarioRepository usuarioRepository;
-
-    public UsuarioAutenticadoService(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     public String getEmail() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

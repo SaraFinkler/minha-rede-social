@@ -18,8 +18,11 @@ public class UsuarioMapper {
     public static UsuarioResponse toResponse(Usuario usuario) {
         return UsuarioResponse.builder()
                 .id(usuario.getId())
-                .nome(usuario.getNomeCompleto())
+                .nomeCompleto(usuario.getNomeCompleto())
                 .email(usuario.getEmail())
+                .apelido(usuario.getApelido())
+                .dataNascimento(usuario.getDataNascimento())
+                .imagemPerfil(usuario.getImagemPerfil())
                 .ativo(usuario.isAtivo())
                 .build();
     }

@@ -9,17 +9,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class IncluirUsuarioService {
+public class CadastrarUsuarioService {
 
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public IncluirUsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
+    public CadastrarUsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
         this.usuarioRepository = usuarioRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UsuarioResponse incluir(UsuarioRequest request){
+    public UsuarioResponse cadastrar(UsuarioRequest request){
         Usuario usuario = UsuarioMapper.toEntity(request);
         usuario.setSenha(passwordEncoder.encode(request.getSenha()));
         usuario.setAtivo(true);
