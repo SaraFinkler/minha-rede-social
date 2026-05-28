@@ -10,9 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class ListarFeedPostService {
 
@@ -25,15 +22,10 @@ public class ListarFeedPostService {
     public Page<PostResponse> listarFeed(Long usuarioId, Pageable pageable) {
         Usuario usuario = buscarUsuarioService.porId(usuarioId);
 
-        List<Usuario> usuariosFeed = new ArrayList<>();
-
-        usuariosFeed.add(usuario);
-
-        usuariosFeed.addAll(usuario.getAmigos());
-
         return postRepository
-                .findByUsuarioInAndAtivoTrueOrderByDataCriacaoDesc(
-                        usuariosFeed,
+                .buscarFeed(
+                        usuarioId,
+                        usuario.getAmigos(),
                         pageable
                 )
                 .map(PostMapper::toResponse);
