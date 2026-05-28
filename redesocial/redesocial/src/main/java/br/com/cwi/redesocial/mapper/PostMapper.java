@@ -12,7 +12,6 @@ public class PostMapper {
                 .ativo(post.getAtivo())
                 .usuario(post.getUsuario().getId())
                 .dataCriacao(post.getDataCriacao())
-                .dataAlteracao(post.getDataAlteracao())
                 .build();
     }
 }
