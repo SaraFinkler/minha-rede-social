@@ -18,8 +18,6 @@ public class PostPerfilResponse {
 
     private VisibilidadePost visibilidade;
 
-    private boolean ativo;
-
     private LocalDateTime dataCriacao;
 
     private LocalDateTime dataAlteracao;

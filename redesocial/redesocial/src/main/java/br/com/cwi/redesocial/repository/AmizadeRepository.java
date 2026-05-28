@@ -29,6 +29,16 @@ public interface AmizadeRepository extends JpaRepository<Amizade, Long> {
     Page<Amizade> listarAmizadesAceitas(@Param("usuarioId") long usuarioId, Pageable pageable);
 
     @Query("""
+                SELECT a
+                FROM Amizade a
+                WHERE a.status = br.com.cwi.redesocial.enums.StatusAmizade.PENDENTE
+                  AND (a.solicitante.id = :usuarioId
+                       OR a.destinatario.id = :usuarioId)
+                ORDER BY a.id DESC
+            """)
+    Page<Amizade> listarAmizadesPendentes(@Param("usuarioId") long usuarioId, Pageable pageable);
+    
+    @Query("""
                 SELECT CASE WHEN COUNT(a) > 0 THEN true ELSE false END
                 FROM Amizade a
                 WHERE a.status = br.com.cwi.redesocial.enums.StatusAmizade.ACEITA

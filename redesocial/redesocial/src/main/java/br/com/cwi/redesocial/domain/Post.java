@@ -31,9 +31,6 @@ public class Post {
     @Column(nullable = false, updatable = false)
     private LocalDateTime dataCriacao;
 
-    @Column(nullable = false)
-    private Boolean ativo;
-
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;

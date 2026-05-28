@@ -17,7 +17,7 @@ public class ListarPostService {
     private PostRepository postRepository;
 
     public List<PostResponse> listar() {
-        return postRepository.findByAtivoTrue().stream()
+        return postRepository.findAll().stream()
                 .map(PostMapper::toResponse)
                 .collect(toList());
     }

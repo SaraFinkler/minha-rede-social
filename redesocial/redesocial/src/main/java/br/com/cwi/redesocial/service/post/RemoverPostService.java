@@ -32,8 +32,6 @@ public class RemoverPostService {
 
         usuarioDonoPostValidator.validar(usuario, post);
 
-        post.setAtivo(false);
-
-        postRepository.save(post);
+        postRepository.delete(post);
     }
 }

@@ -28,7 +28,6 @@ public class IncluirPostService {
 
         Post post = toEntity(request);
 
-        post.setAtivo(true);
         post.setUsuario(usuario);
 
         postRepository.save(post);
