@@ -1,7 +1,6 @@
 package br.com.cwi.redesocial.service.post;
 
 import br.com.cwi.redesocial.controller.response.post.PostResponse;
-import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.mapper.PostMapper;
 import br.com.cwi.redesocial.repository.PostRepository;
 import br.com.cwi.redesocial.service.usuario.BuscarUsuarioService;
@@ -20,12 +19,11 @@ public class ListarFeedPostService {
     private BuscarUsuarioService buscarUsuarioService;
 
     public Page<PostResponse> listarFeed(Long usuarioId, Pageable pageable) {
-        Usuario usuario = buscarUsuarioService.porId(usuarioId);
+        buscarUsuarioService.porId(usuarioId);
 
         return postRepository
                 .buscarFeed(
                         usuarioId,
-                        usuario.getAmigos(),
                         pageable
                 )
                 .map(PostMapper::toResponse);
