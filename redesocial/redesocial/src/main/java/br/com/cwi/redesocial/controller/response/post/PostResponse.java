@@ -23,6 +23,4 @@ public class PostResponse {
     private Long usuario;
 
     private LocalDateTime dataCriacao;
-
-    private LocalDateTime dataAlteracao;
 }

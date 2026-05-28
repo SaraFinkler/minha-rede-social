@@ -7,7 +7,6 @@ import br.com.cwi.redesocial.domain.Post;
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.mapper.comentario.ComentarioMapper;
 import br.com.cwi.redesocial.repository.ComentarioRepository;
-import br.com.cwi.redesocial.repository.PostRepository;
 import br.com.cwi.redesocial.service.post.PostService;
 import br.com.cwi.redesocial.service.usuario.UsuarioAutenticadoService;
 import org.springframework.beans.factory.annotation.Autowired;
