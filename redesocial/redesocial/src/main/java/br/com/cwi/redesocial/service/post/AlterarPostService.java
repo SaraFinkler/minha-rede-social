@@ -35,7 +35,7 @@ public class AlterarPostService {
 
         Usuario usuario = usuarioAutenticadoService.get();
 
-        usuarioDonoPostValidator.validator(usuario, post);
+        usuarioDonoPostValidator.validar(usuario, post);
 
         toEntity(post, request);
 

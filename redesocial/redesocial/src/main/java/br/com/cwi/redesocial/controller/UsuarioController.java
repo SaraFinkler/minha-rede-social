@@ -35,12 +35,12 @@ public class UsuarioController {
         this.cadastrarUsuarioService = cadastrarUsuarioService;
     }
 
-    @GetMapping("/eu")
+    @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public UsuarioResponse obterUsuarioLogado() { return buscarUsuarioService.obterUsuarioLogado(); }
 
 
-    @GetMapping()
+    @GetMapping("/email")
     @ResponseStatus(HttpStatus.OK)
     public UsuarioResponse buscarPorEmail(@RequestParam String email) {
         return buscarUsuarioService.buscarPorEmail(email);

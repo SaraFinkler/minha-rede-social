@@ -26,7 +26,7 @@ public class Amizade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime respostaSolicitacao;
+    private LocalDateTime dataRespostaSolicitacao;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

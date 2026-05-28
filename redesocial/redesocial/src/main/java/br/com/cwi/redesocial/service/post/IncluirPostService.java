@@ -4,13 +4,14 @@ import br.com.cwi.redesocial.controller.request.post.IncluirPostRequest;
 import br.com.cwi.redesocial.controller.response.post.PostResponse;
 import br.com.cwi.redesocial.domain.Post;
 import br.com.cwi.redesocial.domain.Usuario;
-import br.com.cwi.redesocial.mapper.PostMapper;
-import br.com.cwi.redesocial.mapper.post.IncluirPostMapper;
 import br.com.cwi.redesocial.repository.PostRepository;
-import br.com.cwi.redesocial.service.usuario.BuscarUsuarioService;
+import br.com.cwi.redesocial.service.usuario.UsuarioAutenticadoService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import static br.com.cwi.redesocial.mapper.PostMapper.toResponse;
+import static br.com.cwi.redesocial.mapper.post.IncluirPostMapper.toEntity;
 
 @Service
 public class IncluirPostService {
@@ -19,19 +20,19 @@ public class IncluirPostService {
     private PostRepository postRepository;
 
     @Autowired
-    private BuscarUsuarioService buscarUsuarioService;
+    private UsuarioAutenticadoService usuarioAutenticadoService;
 
     @Transactional
     public PostResponse incluir(IncluirPostRequest request) {
-        Usuario usuario = buscarUsuarioService.porId(request.getUsuarioId());
+        Usuario usuario = usuarioAutenticadoService.get();
 
-        Post post = IncluirPostMapper.toEntity(request);
+        Post post = toEntity(request);
 
         post.setAtivo(true);
         post.setUsuario(usuario);
 
         postRepository.save(post);
 
-        return PostMapper.toResponse(post);
+        return toResponse(post);
     }
 }

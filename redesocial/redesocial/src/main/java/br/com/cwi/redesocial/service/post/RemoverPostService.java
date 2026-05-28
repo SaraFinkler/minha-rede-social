@@ -30,7 +30,7 @@ public class RemoverPostService {
 
         Usuario usuario = usuarioAutenticadoService.get();
 
-        usuarioDonoPostValidator.validator(usuario, post);
+        usuarioDonoPostValidator.validar(usuario, post);
 
         post.setAtivo(false);
 
