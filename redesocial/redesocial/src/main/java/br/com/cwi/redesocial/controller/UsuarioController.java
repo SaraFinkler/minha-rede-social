@@ -1,17 +1,16 @@
 package br.com.cwi.redesocial.controller;
 
+import br.com.cwi.redesocial.controller.request.usuario.EditarUsarioRequest;
 import br.com.cwi.redesocial.controller.request.usuario.UsuarioRequest;
 import br.com.cwi.redesocial.controller.response.usuario.UsuarioResponse;
-import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.service.usuario.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 import static org.springframework.http.HttpStatus.NO_CONTENT;
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -28,6 +27,9 @@ public class UsuarioController {
 
     @Autowired
     private RemoverUsuarioService removerUsuarioService;
+
+    @Autowired
+    private EditarUsuarioService editarUsuarioService;
 
     @Autowired
     private UsuarioAutenticadoService usuarioAutenticadoService;
@@ -53,10 +55,16 @@ public class UsuarioController {
         return cadastrarUsuarioService.cadastrar(request);
     }
 
+    @PutMapping()
+    @ResponseStatus(OK)
+    public UsuarioResponse editarUsuarioLogado(@RequestBody EditarUsarioRequest request) {
+        return editarUsuarioService.editar(request);
+    }
+
     @PutMapping("/desativar")
     @ResponseStatus(NO_CONTENT)
-    public void desativarContaUsuarioLogado() {
-        desativarUsuarioService.desativar();
+    public UsuarioResponse desativarContaUsuarioLogado() {
+        return desativarUsuarioService.desativar();
     }
 
     @DeleteMapping
