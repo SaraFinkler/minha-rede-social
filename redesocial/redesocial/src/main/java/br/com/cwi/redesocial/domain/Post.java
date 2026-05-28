@@ -31,10 +31,6 @@ public class Post {
     @Column(nullable = false, updatable = false)
     private LocalDateTime dataCriacao;
 
-    @UpdateTimestamp
-    @Column(nullable = false)
-    private LocalDateTime dataAlteracao;
-
     @Column(nullable = false)
     private Boolean ativo;
 

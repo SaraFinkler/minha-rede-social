@@ -25,10 +25,6 @@ public class Comentario {
     @Column(nullable = false, updatable = false)
     private LocalDateTime dataCriacao;
 
-    @UpdateTimestamp
-    @Column(nullable = false)
-    private LocalDateTime dataAlteracao;
-
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;

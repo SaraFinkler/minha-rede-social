@@ -11,7 +11,6 @@ public class PostPerfilMapper {
                 .visibilidade(post.getVisibilidade())
                 .ativo(post.getAtivo())
                 .dataCriacao(post.getDataCriacao())
-                .dataAlteracao(post.getDataAlteracao())
                 .usuarioId(post.getUsuario().getId())
                 .nomeAutor(post.getUsuario().getNomeCompleto())
                 .apelidoAutor(post.getUsuario().getApelido())
