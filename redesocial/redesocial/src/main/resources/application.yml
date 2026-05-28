@@ -7,6 +7,12 @@ spring:
     username: postgres.afdgwnyozvufhzdtuttt
     password: SenhaSuperForte
     driver-class-name: org.postgresql.Driver
+    hikari:
+      # Keep the pool small to avoid exhausting the Supabase/pgbouncer client limit
+      maximum-pool-size: 5
+      minimum-idle: 1
+      max-lifetime: 600000
+      connection-timeout: 30000
 
   jpa:
     hibernate:
@@ -15,3 +21,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+jwt:
+  public:
+    key: classpath:authz.pub
+  private:
+    key: classpath:authz.pem
