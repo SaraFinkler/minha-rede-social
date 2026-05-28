@@ -2,7 +2,6 @@ package br.com.cwi.redesocial.security.service;
 
 import br.com.cwi.redesocial.controller.request.usuario.UsuarioRequest;
 import br.com.cwi.redesocial.controller.response.usuario.UsuarioResponse;
-import br.com.cwi.redesocial.domain.Permissao;
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.mapper.usuario.UsuarioMapper;
 import br.com.cwi.redesocial.repository.UsuarioRepository;
@@ -24,9 +23,6 @@ public class IncluirUsuarioService {
         Usuario usuario = UsuarioMapper.toEntity(request);
         usuario.setSenha(passwordEncoder.encode(request.getSenha()));
         usuario.setAtivo(true);
-
-        request.getPermissoes()
-                        .forEach(p -> usuario.adicionarPermissao(Permissao.builder().nome(p).build()));
 
         usuarioRepository.save(usuario);
 

@@ -53,12 +53,4 @@ public class Usuario {
     private List<Post> posts;
 
     private boolean ativo;
-
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Permissao> permissoes = new ArrayList<>();
-
-    public void adicionarPermissao(Permissao permissao){
-        this.permissoes.add(permissao);
-        permissao.setUsuario(this);
-    }
 }

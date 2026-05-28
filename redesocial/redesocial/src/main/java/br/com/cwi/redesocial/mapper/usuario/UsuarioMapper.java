@@ -11,6 +11,7 @@ public class UsuarioMapper {
                 .nomeCompleto(request.getNome())
                 .email(request.getEmail())
                 .senha(request.getSenha())
+                .dataNascimento(request.getDataNascimento())
                 .build();
     }
 
@@ -20,7 +21,6 @@ public class UsuarioMapper {
                 .nome(usuario.getNomeCompleto())
                 .email(usuario.getEmail())
                 .ativo(usuario.isAtivo())
-                .permissoes(usuario.getPermissoes().stream().toList())
                 .build();
     }
 }

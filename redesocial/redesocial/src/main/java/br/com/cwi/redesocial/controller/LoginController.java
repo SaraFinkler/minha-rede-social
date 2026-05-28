@@ -2,7 +2,6 @@ package br.com.cwi.redesocial.controller;
 
 import br.com.cwi.redesocial.controller.request.login.LoginRequest;
 import br.com.cwi.redesocial.controller.response.login.LoginResponse;
-import br.com.cwi.redesocial.domain.Permissao;
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.security.service.BuscarUsuarioService;
 import org.springframework.http.ResponseEntity;
@@ -48,9 +47,7 @@ public class LoginController {
         }
 
         Usuario usuario = optUser.get();
-        List<String> permissoes = usuario.getPermissoes().stream()
-                .map(Permissao::getNome)
-                .toList();
+
         long expiresIn = 600L;
 
         JwtClaimsSet jwt = JwtClaimsSet.builder()
@@ -59,7 +56,6 @@ public class LoginController {
                 .expiresAt(Instant.now().plusSeconds(expiresIn))
                 .issuedAt(Instant.now())
                 .claim("email", usuario.getEmail())
-                .claim("scope", permissoes)
                 .build();
 
         String token = jwtEncoder.encode(JwtEncoderParameters.from(jwt)).getTokenValue();
