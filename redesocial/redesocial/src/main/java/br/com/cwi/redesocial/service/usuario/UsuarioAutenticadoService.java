@@ -1,4 +1,4 @@
-package br.com.cwi.redesocial.service;
+package br.com.cwi.redesocial.service.usuario;
 
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.repository.UsuarioRepository;

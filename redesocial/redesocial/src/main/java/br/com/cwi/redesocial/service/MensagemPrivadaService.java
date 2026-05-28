@@ -1,5 +1,6 @@
 package br.com.cwi.redesocial.service;
 
+import br.com.cwi.redesocial.service.usuario.UsuarioAutenticadoService;
 import org.springframework.stereotype.Service;
 
 @Service

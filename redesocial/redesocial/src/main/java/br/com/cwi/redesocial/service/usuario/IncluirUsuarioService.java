@@ -1,4 +1,4 @@
-package br.com.cwi.redesocial.security.service;
+package br.com.cwi.redesocial.service.usuario;
 
 import br.com.cwi.redesocial.controller.request.usuario.UsuarioRequest;
 import br.com.cwi.redesocial.controller.response.usuario.UsuarioResponse;

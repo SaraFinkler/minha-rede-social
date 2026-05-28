@@ -3,7 +3,7 @@ package br.com.cwi.redesocial.controller;
 import br.com.cwi.redesocial.controller.request.login.LoginRequest;
 import br.com.cwi.redesocial.controller.response.login.LoginResponse;
 import br.com.cwi.redesocial.domain.Usuario;
-import br.com.cwi.redesocial.security.service.BuscarUsuarioService;
+import br.com.cwi.redesocial.service.usuario.BuscarUsuarioService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -39,8 +38,6 @@ public class LoginController {
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest){
 
         Optional<Usuario> optUser = buscarUsuarioService.buscarPorEmail(loginRequest.getEmail());
-
-        String teste = passwordEncoder.encode(loginRequest.getSenha());
 
         if(optUser.isEmpty() || !isLoginCorreto(loginRequest.getSenha(), optUser.get().getSenha())){
             throw new BadCredentialsException("Usuário ou senha incorretos!");

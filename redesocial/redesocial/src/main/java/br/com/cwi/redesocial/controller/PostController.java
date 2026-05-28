@@ -3,7 +3,7 @@ package br.com.cwi.redesocial.controller;
 import br.com.cwi.redesocial.controller.request.post.AlterarPostRequest;
 import br.com.cwi.redesocial.controller.request.post.IncluirPostRequest;
 import br.com.cwi.redesocial.controller.response.post.PostResponse;
-import br.com.cwi.redesocial.service.ListarPostService;
+import br.com.cwi.redesocial.service.post.ListarPostService;
 import br.com.cwi.redesocial.service.post.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
