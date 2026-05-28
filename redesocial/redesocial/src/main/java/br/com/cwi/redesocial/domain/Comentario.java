@@ -18,7 +18,7 @@ public class Comentario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false, length = 255)
     private String conteudo;
 
     @CreationTimestamp

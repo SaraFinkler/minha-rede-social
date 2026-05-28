@@ -31,7 +31,7 @@ public class Usuario {
     @Column(nullable = false)
     private LocalDate dataNascimento;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false, length = 128)
     private String senha;
 
     @Column(length = 512)

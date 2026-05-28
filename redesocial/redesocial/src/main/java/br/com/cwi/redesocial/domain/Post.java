@@ -20,7 +20,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false, length = 512)
     private String conteudo;
 
     @Enumerated(EnumType.STRING)
@@ -34,6 +34,9 @@ public class Post {
     @UpdateTimestamp
     @Column(nullable = false)
     private LocalDateTime dataAlteracao;
+
+    @Column(nullable = false)
+    private Boolean ativo;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
