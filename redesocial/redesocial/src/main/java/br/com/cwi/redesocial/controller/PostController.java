@@ -2,6 +2,7 @@ package br.com.cwi.redesocial.controller;
 
 import br.com.cwi.redesocial.controller.request.post.AlterarPostRequest;
 import br.com.cwi.redesocial.controller.request.post.IncluirPostRequest;
+import br.com.cwi.redesocial.controller.response.post.PostPerfilResponse;
 import br.com.cwi.redesocial.controller.response.post.PostResponse;
 import br.com.cwi.redesocial.service.post.ListarPostService;
 import br.com.cwi.redesocial.service.post.*;
@@ -30,6 +31,9 @@ public class PostController {
     private ListarFeedPostService listarFeedPostService;
 
     @Autowired
+    private ListarPerfilPostService listarPerfilPostService;
+
+    @Autowired
     private IncluirPostService incluirPostService;
 
     @Autowired
@@ -52,8 +56,14 @@ public class PostController {
 
     @GetMapping("/feed")
     @ResponseStatus(HttpStatus.OK)
-    public Page<PostResponse> listarFeed(@RequestParam Long usuarioId, Pageable pageable) {
-        return listarFeedPostService.listarFeed(usuarioId, pageable);
+    public Page<PostResponse> listarFeed(Pageable pageable) {
+        return listarFeedPostService.listarFeed(pageable);
+    }
+
+    @GetMapping("/perfil")
+    @ResponseStatus(HttpStatus.OK)
+    public Page<PostPerfilResponse> listarPerfil(@RequestParam(required = false) Long pessoaId, Pageable pageable) {
+        return listarPerfilPostService.listarPerfil(pessoaId, pageable);
     }
 
     @PostMapping
@@ -70,7 +80,7 @@ public class PostController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
-    public void remover(@PathVariable long id) {
+    public void remover(Long id) {
         removerPostService.remover(id);
     }
 }

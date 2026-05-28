@@ -1,8 +1,8 @@
 package br.com.cwi.redesocial.service.post;
 
-import br.com.cwi.redesocial.controller.response.post.PostResponse;
+import br.com.cwi.redesocial.controller.response.post.PostPerfilResponse;
 import br.com.cwi.redesocial.domain.Usuario;
-import br.com.cwi.redesocial.mapper.PostMapper;
+import br.com.cwi.redesocial.mapper.post.PostPerfilMapper;
 import br.com.cwi.redesocial.repository.PostRepository;
 import br.com.cwi.redesocial.service.usuario.BuscarUsuarioService;
 import br.com.cwi.redesocial.service.usuario.UsuarioAutenticadoService;
@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ListarFeedPostService {
+public class ListarPerfilPostService {
 
     @Autowired
     private PostRepository postRepository;
@@ -23,14 +23,19 @@ public class ListarFeedPostService {
     @Autowired
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
-    public Page<PostResponse> listarFeed(Pageable pageable) {
+    public Page<PostPerfilResponse> listarPerfil(Long pessoaId, Pageable pageable) {
+        if (pessoaId != null) {
+            buscarUsuarioService.porId(pessoaId);
+        }
+
         Usuario usuario = usuarioAutenticadoService.get();
 
         return postRepository
-                .buscarFeed(
+                .buscarPerfil(
                         usuario.getId(),
+                        pessoaId,
                         pageable
                 )
-                .map(PostMapper::toResponse);
+                .map(PostPerfilMapper::toResponse);
     }
 }

@@ -3,7 +3,9 @@ package br.com.cwi.redesocial.service.post;
 import br.com.cwi.redesocial.controller.request.post.AlterarPostRequest;
 import br.com.cwi.redesocial.controller.response.post.PostResponse;
 import br.com.cwi.redesocial.domain.Post;
+import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.repository.PostRepository;
+import br.com.cwi.redesocial.service.usuario.UsuarioAutenticadoService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,9 +22,19 @@ public class AlterarPostService {
     @Autowired
     private PostService postService;
 
+    @Autowired
+    private UsuarioAutenticadoService usuarioAutenticadoService;
+
+    @Autowired
+    private UsuarioDonoPostService usuarioDonoPostService;
+
     @Transactional
     public PostResponse alterar(long id, AlterarPostRequest request) {
         Post post = postService.porId(id);
+
+        Usuario usuario = usuarioAutenticadoService.get();
+
+        usuarioDonoPostService.validator(usuario, post);
 
         toEntity(post, request);
 

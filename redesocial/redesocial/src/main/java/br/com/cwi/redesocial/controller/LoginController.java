@@ -32,8 +32,6 @@ public class LoginController {
         this.jwtEncoder = jwtEncoder;
     }
 
-
-
     @PostMapping
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest){
 
@@ -45,7 +43,7 @@ public class LoginController {
 
         Usuario usuario = optUser.get();
 
-        long expiresIn = 600L;
+        long expiresIn = 12000L;
 
         JwtClaimsSet jwt = JwtClaimsSet.builder()
                 .issuer("seguranca-api")
