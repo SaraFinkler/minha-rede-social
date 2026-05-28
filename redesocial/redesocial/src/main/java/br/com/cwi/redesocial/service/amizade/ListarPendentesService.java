@@ -11,7 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ListarAmigosService {
+public class ListarPendentesService {
 
     @Autowired
     private AmizadeRepository amizadeRepository;
@@ -19,11 +19,11 @@ public class ListarAmigosService {
     @Autowired
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
-    public Page<AmizadeResponse> listarAmigos(Pageable pageable) {
+    public Page<AmizadeResponse> listarPendentes(Pageable pageable) {
+
         Usuario usuario = usuarioAutenticadoService.get();
 
         return amizadeRepository
-                .listarAmizadesAceitas(usuario.getId(), pageable)
-                .map(AmizadeMapper::toResponse);
-    }
+                .listarAmizadesPendentes(usuario.getId(), pageable)
+                .map(AmizadeMapper::toResponse);    }
 }

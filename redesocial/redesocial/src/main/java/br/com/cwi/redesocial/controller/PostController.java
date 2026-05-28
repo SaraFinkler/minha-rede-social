@@ -80,7 +80,7 @@ public class PostController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
-    public void remover(Long id) {
+    public void remover(@PathVariable long id) {
         removerPostService.remover(id);
     }
 }

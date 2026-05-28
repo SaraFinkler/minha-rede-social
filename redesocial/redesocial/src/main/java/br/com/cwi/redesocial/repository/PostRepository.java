@@ -11,15 +11,10 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    List<Post> findByAtivoTrue();
-
-    Page<Post> findByAtivoTrue(Pageable pageable);
-
     @Query("""
         SELECT p
         FROM Post p
-        WHERE p.ativo = true
-        AND (
+        WHERE (
             p.visibilidade = br.com.cwi.redesocial.enums.VisibilidadePost.PUBLICO
             OR p.usuario.id = :usuarioId
             OR (
@@ -42,8 +37,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("""
         SELECT p
         FROM Post p
-        WHERE p.ativo = true
-        AND (
+        WHERE (
             p.usuario.id = :usuarioId
             OR (
                 :pessoaId IS NOT NULL

@@ -9,7 +9,6 @@ public class PostMapper {
                 .id(post.getId())
                 .conteudo(post.getConteudo())
                 .visibilidade(post.getVisibilidade())
-                .ativo(post.getAtivo())
                 .usuario(post.getUsuario().getId())
                 .dataCriacao(post.getDataCriacao())
                 .build();

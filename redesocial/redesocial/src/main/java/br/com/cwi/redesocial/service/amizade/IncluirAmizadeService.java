@@ -7,6 +7,7 @@ import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.repository.AmizadeRepository;
 import br.com.cwi.redesocial.service.usuario.BuscarUsuarioService;
 import br.com.cwi.redesocial.service.usuario.UsuarioAutenticadoService;
+import br.com.cwi.redesocial.validator.amizade.SolicitacaoAmizadeValidator;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,12 +30,16 @@ public class IncluirAmizadeService {
     @Autowired
     private ExisteAmizadeService existeAmizadeService;
 
+    @Autowired
+    private SolicitacaoAmizadeValidator solicitacaoAmizadeValidator;
+
     @Transactional
     public AmizadeResponse incluir(IncluirAmizadeRequest request) {
         Usuario solicitante = usuarioAutenticadoService.get();
         Usuario destinatario = buscarUsuarioService.porId(request.getDestinatarioId());
 
         existeAmizadeService.existeAmizade(solicitante.getId(), destinatario.getId());
+        solicitacaoAmizadeValidator.validar(solicitante.getId(), destinatario.getId());
 
         Amizade amizade = toEntity(request);
 

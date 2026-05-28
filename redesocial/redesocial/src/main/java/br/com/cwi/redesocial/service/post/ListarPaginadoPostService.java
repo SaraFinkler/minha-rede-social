@@ -15,7 +15,7 @@ public class ListarPaginadoPostService {
     private PostRepository postRepository;
 
     public Page<PostResponse> listarPaginado(Pageable pageable) {
-        return postRepository.findByAtivoTrue(pageable)
+        return postRepository.findAll(pageable)
                 .map(PostMapper::toResponse);
     }
 }

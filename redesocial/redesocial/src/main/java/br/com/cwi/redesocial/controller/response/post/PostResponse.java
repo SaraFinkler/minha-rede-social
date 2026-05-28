@@ -18,8 +18,6 @@ public class PostResponse {
 
     private VisibilidadePost visibilidade;
 
-    private boolean ativo;
-
     private Long usuario;
 
     private LocalDateTime dataCriacao;
