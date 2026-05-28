@@ -21,8 +21,6 @@ public class ComentarioResponse {
 
     private LocalDateTime dataCriacao;
 
-    private LocalDateTime dataAlteracao;
-
     private Long postId;
 
     private Long usuarioId;
