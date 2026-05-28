@@ -10,9 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class IncluirPostRequest {
-    @NotNull
-    private Long usuarioId;
-
     @NotBlank
     @Size(max = 512)
     private String conteudo;

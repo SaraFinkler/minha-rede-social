@@ -8,7 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Component
 public class UsuarioDonoPostValidator {
-    public void validator(Usuario usuario, Post post) {
+    public void validar(Usuario usuario, Post post) {
         if (post.getUsuario() != usuario) {
             throw new ResponseStatusException(
                     HttpStatus.UNPROCESSABLE_ENTITY,
