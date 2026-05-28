@@ -50,5 +50,4 @@ public class ComentarioController {
     public void deletarComentario(@PathVariable long id) {
         deleteComentarioService.deletar(id);
     }
-
 }
