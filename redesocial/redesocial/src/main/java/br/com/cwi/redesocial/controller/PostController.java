@@ -4,11 +4,11 @@ import br.com.cwi.redesocial.controller.request.post.AlterarPostRequest;
 import br.com.cwi.redesocial.controller.request.post.IncluirPostRequest;
 import br.com.cwi.redesocial.controller.response.post.PostResponse;
 import br.com.cwi.redesocial.service.ListarPostService;
-import br.com.cwi.redesocial.service.post.AlterarPostService;
-import br.com.cwi.redesocial.service.post.IncluirPostService;
-import br.com.cwi.redesocial.service.post.RemoverPostService;
+import br.com.cwi.redesocial.service.post.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +24,12 @@ public class PostController {
     private ListarPostService listarPostService;
 
     @Autowired
+    private ListarPaginadoPostService listarPaginadoPostService;
+
+    @Autowired
+    private ListarFeedPostService listarFeedPostService;
+
+    @Autowired
     private IncluirPostService incluirPostService;
 
     @Autowired
@@ -36,6 +42,18 @@ public class PostController {
     @ResponseStatus(HttpStatus.OK)
     public List<PostResponse> listar() {
         return listarPostService.listar();
+    }
+
+    @GetMapping("/paginado")
+    @ResponseStatus(HttpStatus.OK)
+    public Page<PostResponse> listarPaginado(Pageable pageable) {
+        return listarPaginadoPostService.listarPaginado(pageable);
+    }
+
+    @GetMapping("/feed")
+    @ResponseStatus(HttpStatus.OK)
+    public Page<PostResponse> listarFeed(@RequestParam Long usuarioId, Pageable pageable) {
+        return listarFeedPostService.listarFeed(usuarioId, pageable);
     }
 
     @PostMapping

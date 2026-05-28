@@ -47,4 +47,12 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario")
     private List<Post> posts;
+
+    @ManyToMany
+    @JoinTable(
+            name = "usuario_amigo",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "amigo_id")
+    )
+    private List<Usuario> amigos;
 }
