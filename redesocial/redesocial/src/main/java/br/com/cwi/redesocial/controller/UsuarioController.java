@@ -31,16 +31,13 @@ public class UsuarioController {
     @Autowired
     private EditarUsuarioService editarUsuarioService;
 
-    @Autowired
-    private UsuarioAutenticadoService usuarioAutenticadoService;
-
     public UsuarioController(CadastrarUsuarioService cadastrarUsuarioService) {
         this.cadastrarUsuarioService = cadastrarUsuarioService;
     }
 
     @GetMapping("/eu")
     @ResponseStatus(HttpStatus.OK)
-    public UsuarioResponse obterUsuarioLogado() { return usuarioAutenticadoService.get(); }
+    public UsuarioResponse obterUsuarioLogado() { return buscarUsuarioService.obterUsuarioLogado(); }
 
 
     @GetMapping()

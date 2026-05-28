@@ -17,10 +17,8 @@ public class RemoverUsuarioService {
 
     @Transactional
     public void remover() {
-        UsuarioResponse usuarioLogado = usuarioAutenticadoService.get();
-        Usuario usuario = usuarioRepository.findById(usuarioLogado.getId())
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-        usuarioRepository.delete(usuario);
+        Usuario usuarioLogado = usuarioAutenticadoService.get();
+        usuarioRepository.delete(usuarioLogado);
     }
 
 }

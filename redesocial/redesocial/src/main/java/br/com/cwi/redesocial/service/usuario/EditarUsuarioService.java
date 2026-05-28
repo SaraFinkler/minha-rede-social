@@ -19,31 +19,23 @@ public class EditarUsuarioService {
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
         public UsuarioResponse editar(EditarUsarioRequest request) {
-            UsuarioResponse usuarioLogado = usuarioAutenticadoService.get();
-
-            Usuario usuario = usuarioRepository.findById(usuarioLogado.getId())
-                    .orElseThrow(() ->
-                            new ResponseStatusException(
-                                    HttpStatus.NOT_FOUND,
-                                    "Usuário não encontrado"
-                            )
-                    );
+            Usuario usuarioLogado = usuarioAutenticadoService.get();
 
             if (preenchido(request.getNomeCompleto())) {
-                usuario.setNomeCompleto(request.getNomeCompleto());
+                usuarioLogado.setNomeCompleto(request.getNomeCompleto());
             }
 
             if (preenchido(request.getApelido())) {
-                usuario.setApelido(request.getApelido());
+                usuarioLogado.setApelido(request.getApelido());
             }
 
             if (preenchido(request.getImagemPerfil())) {
-                usuario.setImagemPerfil(request.getImagemPerfil());
+                usuarioLogado.setImagemPerfil(request.getImagemPerfil());
             }
 
-            usuarioRepository.save(usuario);
+            usuarioRepository.save(usuarioLogado);
 
-            return UsuarioMapper.toResponse(usuario);
+            return UsuarioMapper.toResponse(usuarioLogado);
         }
 
     private boolean preenchido(String valor) {

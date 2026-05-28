@@ -19,11 +19,9 @@ public class DesativarUsuarioService {
 
     @Transactional
     public UsuarioResponse desativar() {
-        UsuarioResponse usuarioLogado = usuarioAutenticadoService.get();
-        Usuario usuario = usuarioRepository.findById(usuarioLogado.getId())
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-        usuario.setAtivo(false);
-        usuarioRepository.save(usuario);
-        return UsuarioMapper.toResponse(usuario);
+        Usuario usuarioLogado = usuarioAutenticadoService.get();
+        usuarioLogado.setAtivo(false);
+        usuarioRepository.save(usuarioLogado);
+        return UsuarioMapper.toResponse(usuarioLogado);
     }
 }

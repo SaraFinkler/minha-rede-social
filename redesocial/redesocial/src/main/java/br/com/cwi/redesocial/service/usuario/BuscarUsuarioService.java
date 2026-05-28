@@ -17,6 +17,9 @@ public class BuscarUsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private UsuarioAutenticadoService usuarioAutenticadoService;
+
     public Usuario porId(long id) {
         return usuarioRepository
                 .findById(id)
@@ -34,5 +37,10 @@ public class BuscarUsuarioService {
         }
 
         return UsuarioMapper.toResponse(usuario.get());
+    }
+
+    public UsuarioResponse obterUsuarioLogado(){
+        Usuario usuario = usuarioAutenticadoService.get();
+        return UsuarioMapper.toResponse(usuario);
     }
 }
