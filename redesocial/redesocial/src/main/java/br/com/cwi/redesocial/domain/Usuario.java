@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,7 +15,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode(of = "id")
+@ToString(of = "id")
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -47,4 +51,14 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario")
     private List<Post> posts;
+
+    private boolean ativo;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Permissao> permissoes = new ArrayList<>();
+
+    public void adicionarPermissao(Permissao permissao){
+        this.permissoes.add(permissao);
+        permissao.setUsuario(this);
+    }
 }
