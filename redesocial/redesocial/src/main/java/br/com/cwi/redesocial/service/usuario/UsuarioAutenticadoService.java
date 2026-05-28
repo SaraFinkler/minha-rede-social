@@ -1,6 +1,7 @@
 package br.com.cwi.redesocial.service.usuario;
 
-import br.com.cwi.redesocial.domain.Usuario;
+import br.com.cwi.redesocial.controller.response.usuario.UsuarioResponse;
+import br.com.cwi.redesocial.mapper.usuario.UsuarioMapper;
 import br.com.cwi.redesocial.repository.UsuarioRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +15,7 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 public class UsuarioAutenticadoService {
 
     private final UsuarioRepository usuarioRepository;
+
 
     public UsuarioAutenticadoService(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
@@ -39,8 +41,8 @@ public class UsuarioAutenticadoService {
         return emailClaim.toString();
     }
 
-    public Usuario get() {
-        return usuarioRepository.findByEmail(getEmail())
+    public UsuarioResponse get() {
+        return usuarioRepository.findByEmail(getEmail()).map(UsuarioMapper::toResponse)
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "Usuário não existe ou não esta autenticado"));
     }
 }

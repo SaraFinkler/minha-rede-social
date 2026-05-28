@@ -2,6 +2,7 @@ package br.com.cwi.redesocial.controller;
 
 import br.com.cwi.redesocial.controller.request.login.LoginRequest;
 import br.com.cwi.redesocial.controller.response.login.LoginResponse;
+import br.com.cwi.redesocial.controller.response.usuario.UsuarioResponse;
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.service.usuario.BuscarUsuarioService;
 import org.springframework.http.ResponseEntity;
@@ -37,15 +38,15 @@ public class LoginController {
     @PostMapping
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest){
 
-        Optional<Usuario> optUser = buscarUsuarioService.buscarPorEmail(loginRequest.getEmail());
+        UsuarioResponse response = buscarUsuarioService.buscarPorEmail(loginRequest.getEmail());
 
-        if(optUser.isEmpty() || !isLoginCorreto(loginRequest.getSenha(), optUser.get().getSenha())){
+        Usuario usuario = buscarUsuarioService.porId(response.getId());
+
+        if(!isLoginCorreto(loginRequest.getSenha(), usuario.getSenha())){
             throw new BadCredentialsException("Usuário ou senha incorretos!");
         }
 
-        Usuario usuario = optUser.get();
-
-        long expiresIn = 600L;
+        long expiresIn = 12000L;
 
         JwtClaimsSet jwt = JwtClaimsSet.builder()
                 .issuer("seguranca-api")

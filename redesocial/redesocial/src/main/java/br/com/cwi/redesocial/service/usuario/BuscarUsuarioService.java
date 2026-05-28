@@ -1,6 +1,8 @@
 package br.com.cwi.redesocial.service.usuario;
 
+import br.com.cwi.redesocial.controller.response.usuario.UsuarioResponse;
 import br.com.cwi.redesocial.domain.Usuario;
+import br.com.cwi.redesocial.mapper.usuario.UsuarioMapper;
 import br.com.cwi.redesocial.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +23,16 @@ public class BuscarUsuarioService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não encontrado"));
     }
 
-    public Optional<Usuario> buscarPorEmail(String email){
-        return usuarioRepository.findByEmail(email);
+    public UsuarioResponse buscarPorEmail(String email){
+        Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
+
+        if(usuario.isEmpty()){
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "Usuario não encontrado"
+            );
+        }
+
+        return UsuarioMapper.toResponse(usuario.get());
     }
 }
