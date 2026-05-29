@@ -1,14 +1,11 @@
 package br.com.cwi.redesocial.controller;
 
-import br.com.cwi.redesocial.controller.request.amizade.IncluirAmizadeRequest;
-import br.com.cwi.redesocial.controller.response.amizade.AmizadeResponse;
+import br.com.cwi.redesocial.controller.request.IncluirAmizadeRequest;
+import br.com.cwi.redesocial.controller.request.amizade.AtualizarStatusAmizadeRequest;
+import br.com.cwi.redesocial.controller.response.AmizadeResponse;
 import br.com.cwi.redesocial.controller.response.amizade.ListarAmizadeResponse;
 import br.com.cwi.redesocial.controller.response.usuario.UsuarioResponse;
-import br.com.cwi.redesocial.service.amizade.IncluirAmizadeService;
-import br.com.cwi.redesocial.service.amizade.ListarAmigosService;
-import br.com.cwi.redesocial.service.amizade.ListarPendentesService;
-import br.com.cwi.redesocial.service.amizade.RemoverAmizadeService;
-import br.com.cwi.redesocial.service.amizade.ObterPerfilAmigoService;
+import br.com.cwi.redesocial.service.amizade.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -37,6 +34,9 @@ public class AmizadeController {
     @Autowired
     private ObterPerfilAmigoService obterPerfilAmigoService;
 
+    @Autowired
+    private AtualizarStatusAmizadeService atualizarStatusAmizadeService;
+
     @GetMapping("/amigos")
     @ResponseStatus(HttpStatus.OK)
     public Page<ListarAmizadeResponse> listarAmigos(@RequestParam(required = false, name = "q") String busca, Pageable pageable) {
@@ -59,6 +59,12 @@ public class AmizadeController {
     @ResponseStatus(HttpStatus.CREATED)
     public AmizadeResponse incluir(@Valid @RequestBody IncluirAmizadeRequest request) {
         return incluirAmizadeService.incluir(request);
+    }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.OK)
+    public AmizadeResponse mudarStatus(@Valid @RequestBody AtualizarStatusAmizadeRequest request) {
+        return atualizarStatusAmizadeService.atualizarStatus(request);
     }
 
     @DeleteMapping("/{id}")
