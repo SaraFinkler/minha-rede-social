@@ -13,25 +13,25 @@ import java.time.LocalDate;
 @Setter
 public class UsuarioRequest {
 
-    @NotBlank(message = "nome é obrigatório")
-    @Size(max = 255, message = "nome deve conter no máximo 255 caracteres")
+    @NotBlank
+    @Size(max = 255)
     private String nome;
 
-    @NotBlank(message = "email é obrigatório")
-    @Email(message = "email deve ser um endereço de email válido")
-    @Size(max = 255, message = "email deve conter no máximo 255 caracteres")
+    @NotBlank
+    @Email
+    @Size(max = 255)
     private String email;
 
-    @Size(max = 50, message = "apelido deve conter no máximo 50 caracteres")
+    @Size(max = 50)
     private String apelido;
 
-    @NotNull(message = "dataNascimento é obrigatório")
+    @NotNull()
     private LocalDate dataNascimento;
 
-    @NotBlank(message = "senha é obrigatória")
-    @Size(max = 128, message = "senha deve conter no máximo 128 caracteres")
+    @NotBlank
+    @Size(max = 128)
     private String senha;
 
-    @Size(max = 512, message = "imagemPerfil deve conter no máximo 512 caracteres")
+    @Size(max = 512)
     private String imagemPerfil;
 }

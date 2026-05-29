@@ -6,7 +6,6 @@ import lombok.Getter;
 
 @Getter
 public class CurtidaRequest {
-    @NotNull(message = "postId é obrigatório")
-    @NotEmpty(message = "postId é não pode ser vazio")
+    @NotNull
     Long postId;
 }

@@ -1,4 +1,24 @@
-• Implementar validações de _input_ em todas as rotas (ex: `javax.validation` / `jakarta.validation`). Lançar exceções coerentes (400 Bad Request, 403 Forbidden, 404 Not Found).
-• O tratamento de erros deve ser centralizado e retornar mensagens claras (payload padronizado para erros de validação e exceções não mapeadas).
+FAZER:
 • Testes (services, validators e mappers)
 • Criar validators
+
+FELIPE:
+• VERIFICAR CURTIDAS
+• Criar endpoint de auth
+• Ajustar envio de ids para o body
+
+• Verificar data de criação e alteração
+
+• Verificar sentido da existência dos Beans(@NotNull, e @NotEmpty)
+• Remover mensanges customizadas dos Beans(@NotNull, e @NotEmpty)
+
+
+SARA:
+• Ajustar pefil para aparece apenas o post da pessoa selecionada
+• PERGUNTAR PRO MARIO SOBRE:
+    O tratamento de erros deve ser centralizado e retornar mensagens claras (payload padronizado para erros de validação e exceções não mapeadas).
+
+• Atualizar amizade pamonha
+• Post visibilidade pamonha
+
+• Não deve permitir o usuário de trocar a visibilidade de um post para a mesma visibilidade que ele já tem.

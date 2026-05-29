@@ -12,7 +12,7 @@ public class UsuarioDonoPostValidator {
         if (post.getUsuario() != usuario) {
             throw new ResponseStatusException(
                     HttpStatus.FORBIDDEN,
-                    "Só o usuário dono do post pode remover o post"
+                    "Só o usuário dono do post pode alterar a visibilidade do post"
             );
         }
     }
