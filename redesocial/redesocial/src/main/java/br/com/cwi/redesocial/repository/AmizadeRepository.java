@@ -31,6 +31,23 @@ public interface AmizadeRepository extends JpaRepository<Amizade, Long> {
     @Query("""
                 SELECT a
                 FROM Amizade a
+                WHERE a.status = br.com.cwi.redesocial.enums.StatusAmizade.ACEITA
+                  AND (a.solicitante.id = :usuarioId
+                       OR a.destinatario.id = :usuarioId)
+                  AND (:busca is null or :busca = ''
+                       or lower(CASE WHEN a.solicitante.id = :usuarioId
+                                      THEN a.destinatario.nomeCompleto
+                                      ELSE a.solicitante.nomeCompleto END) like lower(concat('%', :busca, '%'))
+                       or lower(CASE WHEN a.solicitante.id = :usuarioId
+                                      THEN a.destinatario.email
+                                      ELSE a.solicitante.email END) like lower(concat('%', :busca, '%')))
+                ORDER BY a.id DESC
+            """)
+    Page<Amizade> listarAmizadesAceitasComBusca(@Param("usuarioId") long usuarioId, @Param("busca") String busca, Pageable pageable);
+
+    @Query("""
+                SELECT a
+                FROM Amizade a
                 WHERE a.status = br.com.cwi.redesocial.enums.StatusAmizade.PENDENTE
                   AND (a.solicitante.id = :usuarioId
                        OR a.destinatario.id = :usuarioId)

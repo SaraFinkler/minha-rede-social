@@ -1,8 +1,8 @@
 package br.com.cwi.redesocial.service.amizade;
 
-import br.com.cwi.redesocial.controller.response.AmizadeResponse;
+import br.com.cwi.redesocial.controller.response.amizade.ListarAmizadeResponse;
 import br.com.cwi.redesocial.domain.Usuario;
-import br.com.cwi.redesocial.mapper.usuario.AmizadeMapper;
+import br.com.cwi.redesocial.mapper.amizade.ListarAmizadeMapper;
 import br.com.cwi.redesocial.repository.AmizadeRepository;
 import br.com.cwi.redesocial.service.usuario.UsuarioAutenticadoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,18 @@ public class ListarAmigosService {
     @Autowired
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
-    public Page<AmizadeResponse> listarAmigos(Pageable pageable) {
+    public Page<ListarAmizadeResponse> listarAmigos(Pageable pageable) {
         Usuario usuario = usuarioAutenticadoService.get();
 
         return amizadeRepository
                 .listarAmizadesAceitas(usuario.getId(), pageable)
-                .map(AmizadeMapper::toResponse);
+                .map(amizade -> ListarAmizadeMapper.toResponse(amizade, usuario.getId()));
+    }
+
+    public Page<ListarAmizadeResponse> listarAmigos(String busca, Pageable pageable) {
+        Usuario usuario = usuarioAutenticadoService.get();
+        return amizadeRepository
+                .listarAmizadesAceitasComBusca(usuario.getId(), busca, pageable)
+                .map(amizade -> ListarAmizadeMapper.toResponse(amizade, usuario.getId()));
     }
 }
