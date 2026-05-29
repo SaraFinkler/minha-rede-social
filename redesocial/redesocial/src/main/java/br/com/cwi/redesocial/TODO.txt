@@ -3,7 +3,6 @@ FAZER:
 • Criar validators
 
 FELIPE:
-• VERIFICAR CURTIDAS
 • Criar endpoint de auth
 • Ajustar envio de ids para o body
 

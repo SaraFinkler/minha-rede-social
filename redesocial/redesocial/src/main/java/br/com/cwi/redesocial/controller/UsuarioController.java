@@ -19,9 +19,6 @@ import static org.springframework.http.HttpStatus.OK;
 public class UsuarioController {
 
     @Autowired
-    private CadastrarUsuarioService cadastrarUsuarioService;
-
-    @Autowired
     private BuscarUsuarioService buscarUsuarioService;
 
     @Autowired
@@ -51,12 +48,6 @@ public class UsuarioController {
     @ResponseStatus(HttpStatus.OK)
     public UsuarioResponse buscarPorEmail(@RequestParam String email) {
         return buscarUsuarioService.buscarPorEmail(email);
-    }
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public UsuarioResponse cadastrar(@Valid @RequestBody UsuarioRequest request) {
-        return cadastrarUsuarioService.cadastrar(request);
     }
 
     @PutMapping()
