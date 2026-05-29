@@ -1,0 +1,7 @@
+• Criar endpoint para aceitar amizade
+• Ajustar para recusar amizade
+• Adicionar @valid aos requests
+• Verificar validações em requests (@NotNull, NotEmpty...)
+• Implementar validações de _input_ em todas as rotas (ex: `javax.validation` / `jakarta.validation`). Lançar exceções coerentes (400 Bad Request, 403 Forbidden, 404 Not Found).
+• O tratamento de erros deve ser centralizado e retornar mensagens claras (payload padronizado para erros de validação e exceções não mapeadas).
+• Testes (services, validators e mappers)
