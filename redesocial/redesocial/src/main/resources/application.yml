@@ -27,3 +27,8 @@ jwt:
     key: classpath:authz.pub
   private:
     key: classpath:authz.pem
+
+server:
+  error:
+    include-message: always
+    include-exception: true

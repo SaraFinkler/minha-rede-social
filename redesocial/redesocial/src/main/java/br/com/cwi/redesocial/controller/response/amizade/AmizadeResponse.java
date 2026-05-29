@@ -1,4 +1,4 @@
-package br.com.cwi.redesocial.controller.response;
+package br.com.cwi.redesocial.controller.response.amizade;
 
 import br.com.cwi.redesocial.enums.StatusAmizade;
 import lombok.AllArgsConstructor;

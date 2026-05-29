@@ -1,6 +1,6 @@
 package br.com.cwi.redesocial.mapper.usuario;
 
-import br.com.cwi.redesocial.controller.request.IncluirAmizadeRequest;
+import br.com.cwi.redesocial.controller.request.amizade.IncluirAmizadeRequest;
 import br.com.cwi.redesocial.domain.Amizade;
 import br.com.cwi.redesocial.enums.StatusAmizade;
 

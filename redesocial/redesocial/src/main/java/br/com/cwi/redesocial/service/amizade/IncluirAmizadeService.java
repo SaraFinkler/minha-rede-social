@@ -1,7 +1,7 @@
 package br.com.cwi.redesocial.service.amizade;
 
-import br.com.cwi.redesocial.controller.request.IncluirAmizadeRequest;
-import br.com.cwi.redesocial.controller.response.AmizadeResponse;
+import br.com.cwi.redesocial.controller.request.amizade.IncluirAmizadeRequest;
+import br.com.cwi.redesocial.controller.response.amizade.AmizadeResponse;
 import br.com.cwi.redesocial.domain.Amizade;
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.repository.AmizadeRepository;

@@ -1,6 +1,6 @@
 package br.com.cwi.redesocial.mapper.usuario;
 
-import br.com.cwi.redesocial.controller.response.AmizadeResponse;
+import br.com.cwi.redesocial.controller.response.amizade.AmizadeResponse;
 import br.com.cwi.redesocial.domain.Amizade;
 
 public class AmizadeMapper {
