@@ -38,8 +38,8 @@ public class IncluirAmizadeService {
         Usuario solicitante = usuarioAutenticadoService.get();
         Usuario destinatario = buscarUsuarioService.porId(request.getDestinatarioId());
 
-        existeAmizadeService.existeAmizade(solicitante.getId(), destinatario.getId());
         solicitacaoAmizadeValidator.validar(solicitante.getId(), destinatario.getId());
+        existeAmizadeService.existeAmizade(solicitante.getId(), destinatario.getId());
 
         Amizade amizade = toEntity(request);
 

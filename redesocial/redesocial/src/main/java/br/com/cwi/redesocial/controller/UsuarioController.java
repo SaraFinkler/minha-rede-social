@@ -6,6 +6,8 @@ import br.com.cwi.redesocial.controller.response.usuario.UsuarioResponse;
 import br.com.cwi.redesocial.service.usuario.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,10 +33,19 @@ public class UsuarioController {
     @Autowired
     private EditarUsuarioService editarUsuarioService;
 
+    @Autowired
+    private ListarUsuariosService listarUsuariosService;
+
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public UsuarioResponse obterUsuarioLogado() { return buscarUsuarioService.obterUsuarioLogado(); }
 
+
+    @GetMapping("/listar")
+    @ResponseStatus(HttpStatus.OK)
+    public Page<UsuarioResponse> listarUsuarios(@RequestParam(required = false, name = "q") String busca, Pageable pageable) {
+        return listarUsuariosService.listar(busca, pageable);
+    }
 
     @GetMapping("/email")
     @ResponseStatus(HttpStatus.OK)
