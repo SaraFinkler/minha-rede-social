@@ -20,6 +20,11 @@ public class CadastrarUsuarioService {
     }
 
     public UsuarioResponse cadastrar(UsuarioRequest request){
+
+        usuarioRepository.findByEmail(request.getEmail()).ifPresent(u -> {
+            throw new RuntimeException("Já existe um usuário cadastrado com o email informado.");
+        });
+
         Usuario usuario = UsuarioMapper.toEntity(request);
         usuario.setSenha(passwordEncoder.encode(request.getSenha()));
         usuario.setAtivo(true);

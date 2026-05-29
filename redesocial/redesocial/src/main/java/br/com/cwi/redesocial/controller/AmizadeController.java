@@ -48,7 +48,7 @@ public class AmizadeController {
     public AmizadeResponse incluir(@Valid @RequestBody IncluirAmizadeRequest request) {
         return incluirAmizadeService.incluir(request);
     }
-
+    
     @DeleteMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
     public void remover(@PathVariable long id) {

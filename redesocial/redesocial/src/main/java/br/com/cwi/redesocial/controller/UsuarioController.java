@@ -31,10 +31,6 @@ public class UsuarioController {
     @Autowired
     private EditarUsuarioService editarUsuarioService;
 
-    public UsuarioController(CadastrarUsuarioService cadastrarUsuarioService) {
-        this.cadastrarUsuarioService = cadastrarUsuarioService;
-    }
-
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public UsuarioResponse obterUsuarioLogado() { return buscarUsuarioService.obterUsuarioLogado(); }
@@ -54,7 +50,7 @@ public class UsuarioController {
 
     @PutMapping()
     @ResponseStatus(OK)
-    public UsuarioResponse editarUsuarioLogado(@RequestBody EditarUsarioRequest request) {
+    public UsuarioResponse editarUsuarioLogado(@Valid @RequestBody EditarUsarioRequest request) {
         return editarUsuarioService.editar(request);
     }
 
