@@ -1,8 +1,8 @@
 package br.com.cwi.redesocial.controller;
 
-import br.com.cwi.redesocial.controller.request.IncluirAmizadeRequest;
 import br.com.cwi.redesocial.controller.request.amizade.AtualizarStatusAmizadeRequest;
-import br.com.cwi.redesocial.controller.response.AmizadeResponse;
+import br.com.cwi.redesocial.controller.request.amizade.IncluirAmizadeRequest;
+import br.com.cwi.redesocial.controller.response.amizade.AmizadeResponse;
 import br.com.cwi.redesocial.controller.response.amizade.ListarAmizadeResponse;
 import br.com.cwi.redesocial.controller.response.usuario.UsuarioResponse;
 import br.com.cwi.redesocial.service.amizade.*;
