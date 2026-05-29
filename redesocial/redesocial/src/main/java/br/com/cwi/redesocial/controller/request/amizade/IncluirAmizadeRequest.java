@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class IncluirAmizadeRequest {
-    @NotNull(message = "DestinatarioId é obrigatório")
-    private Long destinatarioId;
+    @NotNull
+    private long destinatarioId;
 }

@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class AtualizarStatusAmizadeRequest {
     @NotNull
-    private Long id;
+    private long id;
 
     @NotNull
     private StatusAmizade status;
