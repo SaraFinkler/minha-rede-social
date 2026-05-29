@@ -31,7 +31,7 @@ public class ObterPerfilAmigoService {
         boolean saoAmigos = amizadeRepository.ehAmigo(usuarioAutenticado.getId(), amigoId);
 
         if (!saoAmigos) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Você não é amigo deste usuário");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Você não tem permissão para visualizar este perfil");
         }
 
         return UsuarioMapper.toResponse(amigo);

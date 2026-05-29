@@ -38,17 +38,17 @@ public class RemoverCurtidaService {
 
         if(post.getVisibilidade() == VisibilidadePost.PRIVADO && !usuariosSaoAmigos){
             throw new ResponseStatusException(
-                    HttpStatus.CONFLICT, "Você precisa ser amigo deste usuário para interagir com ele");
+                    HttpStatus.FORBIDDEN, "Você precisa ser amigo deste usuário para interagir com ele");
         }
 
         boolean jaCurtiu = curtidaRepository.existsByUsuarioIdAndPostId(usuario.getId(), request.getPostId());
 
         if (!jaCurtiu) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Você ainda não curtiu este post");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Você ainda não curtiu este post");
         }
 
         Curtida curtida = curtidaRepository.findByUsuarioIdAndPostId(usuario.getId(), request.getPostId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro ao localizar curtida para deletar"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Erro ao localizar curtida para deletar"));
 
         curtidaRepository.delete(curtida);
     }

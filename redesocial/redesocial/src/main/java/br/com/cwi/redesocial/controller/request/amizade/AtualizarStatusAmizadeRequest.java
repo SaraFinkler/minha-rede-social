@@ -8,9 +8,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AtualizarStatusAmizadeRequest {
-    @NotNull
+    @NotNull(message = "id é obrigatório")
     private Long id;
 
-    @NotNull
+    @NotNull(message = "status é obrigatório")
     private StatusAmizade status;
 }

@@ -39,7 +39,7 @@ public class IncluirComentarioService {
 
         if(post.getVisibilidade() == VisibilidadePost.PRIVADO && !usuariosSaoAmigos){
             throw new ResponseStatusException(
-                    HttpStatus.CONFLICT, "Você precisa ser amigo deste usuário para interagir com ele");
+                    HttpStatus.FORBIDDEN, "Você precisa ser amigo deste usuário para interagir com ele");
         }
 
         Comentario comentario = ComentarioMapper.toEntity(request, post, usuario);

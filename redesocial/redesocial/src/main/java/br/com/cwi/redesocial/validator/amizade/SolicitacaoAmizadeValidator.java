@@ -9,7 +9,7 @@ public class SolicitacaoAmizadeValidator {
     public void validar(long solicitanteId, long destinatarioId) {
         if (solicitanteId == destinatarioId) {
             throw new ResponseStatusException(
-                    HttpStatus.CONFLICT, "O usuário não pode solicitar amizade com ele mesmo");
+                    HttpStatus.BAD_REQUEST, "O usuário não pode solicitar amizade com ele mesmo");
         }
     }
 }
