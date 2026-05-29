@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 @Service
 public class UsuarioAutenticadoService {
@@ -20,18 +20,18 @@ public class UsuarioAutenticadoService {
     public String getEmail() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null) {
-            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, "Usuário não está autenticado");
+            throw new ResponseStatusException(UNAUTHORIZED, "Usuário não está autenticado");
         }
 
         Object credentials = authentication.getCredentials();
         if (!(credentials instanceof Jwt)) {
-            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, "Token JWT não encontrado nas credenciais");
+            throw new ResponseStatusException(UNAUTHORIZED, "Token JWT inválido");
         }
 
         Jwt jwt = (Jwt) credentials;
         Object emailClaim = jwt.getClaim("email");
         if (emailClaim == null) {
-            throw new ResponseStatusException(INTERNAL_SERVER_ERROR, "Claim 'email' não encontrado no token JWT");
+            throw new ResponseStatusException(UNAUTHORIZED, "Token JWT inválido");
         }
 
         return emailClaim.toString();
@@ -39,6 +39,6 @@ public class UsuarioAutenticadoService {
 
     public Usuario get() {
         return usuarioRepository.findByEmail(getEmail())
-                .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "Usuário não existe ou não esta autenticado"));
+                .orElseThrow(() -> new ResponseStatusException(UNAUTHORIZED, "Usuário não autenticado"));
     }
 }

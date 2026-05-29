@@ -13,6 +13,7 @@ public class LoginRequest {
     @Email
     private String email;
 
-    @NotBlank
+    @NotNull(message = "senha é obrigatória")
+    @NotBlank(message = "senha não pode ser vazia")
     private String senha;
 }

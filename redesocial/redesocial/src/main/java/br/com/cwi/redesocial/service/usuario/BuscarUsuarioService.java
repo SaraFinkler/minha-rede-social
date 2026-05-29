@@ -5,11 +5,12 @@ import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.mapper.usuario.UsuarioMapper;
 import br.com.cwi.redesocial.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
+
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Service
 public class BuscarUsuarioService {
@@ -23,7 +24,7 @@ public class BuscarUsuarioService {
     public Usuario porId(long id) {
         return usuarioRepository
                 .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não encontrado"));
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Usuario não encontrado"));
     }
 
     public UsuarioResponse buscarPorEmail(String email){
@@ -31,7 +32,7 @@ public class BuscarUsuarioService {
 
         if(usuario.isEmpty()){
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND,
+                    NOT_FOUND,
                     "Usuario não encontrado"
             );
         }

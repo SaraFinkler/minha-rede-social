@@ -73,7 +73,7 @@ public class IncluirAmizadeService {
             return toResponse(amizade);
         }
 
-        Amizade amizade = toEntity(request);
+        Amizade amizade = toEntity();
 
         amizade.setSolicitante(solicitante);
         amizade.setDestinatario(destinatario);

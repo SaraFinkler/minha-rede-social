@@ -43,7 +43,7 @@ public class IncluirCurtidaService {
         boolean jaCurtiu = curtidaRepository.existsByUsuarioIdAndPostId(usuario.getId(), request.getPostId());
 
         if(jaCurtiu)
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Você já curtiu este post");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Você já curtiu este post");
 
         Curtida curtida = CurtidaMapper.toEntity(post, usuario);
         curtidaRepository.save(curtida);

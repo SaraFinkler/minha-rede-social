@@ -25,7 +25,7 @@ public class UsuarioRequest {
     @Size(max = 50)
     private String apelido;
 
-    @NotNull
+    @NotNull()
     private LocalDate dataNascimento;
 
     @NotBlank

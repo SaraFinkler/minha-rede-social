@@ -11,8 +11,8 @@ public class UsuarioDonoPostValidator {
     public void validar(Usuario usuario, Post post) {
         if (post.getUsuario() != usuario) {
             throw new ResponseStatusException(
-                    HttpStatus.UNPROCESSABLE_ENTITY,
-                    "Só o usuário dono do post pode remover o post"
+                    HttpStatus.FORBIDDEN,
+                    "Só o usuário dono do post pode alterar a visibilidade do post"
             );
         }
     }

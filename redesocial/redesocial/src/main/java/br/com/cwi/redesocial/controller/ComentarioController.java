@@ -4,6 +4,7 @@ import br.com.cwi.redesocial.controller.request.comentario.IncluirComentarioRequ
 import br.com.cwi.redesocial.controller.response.comentario.ComentarioResponse;
 import br.com.cwi.redesocial.service.comentario.*;
 import br.com.cwi.redesocial.service.post.*;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,10 +27,9 @@ public class ComentarioController {
     @Autowired
     private ListaComentariosPostService listaComentariosPostService;
 
-
     @PostMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public ComentarioResponse criarComentario(@PathVariable long id, @RequestBody IncluirComentarioRequest request) {
+    public ComentarioResponse criarComentario(@PathVariable long id, @Valid @RequestBody IncluirComentarioRequest request) {
         return incluirComentarioService.incluir(id, request);
     }
 
