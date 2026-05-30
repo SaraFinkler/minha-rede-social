@@ -6,5 +6,5 @@ import lombok.Getter;
 @Getter
 public class CurtidaRequest {
     @NotNull
-    long postId;
+    private Long postId;
 }
