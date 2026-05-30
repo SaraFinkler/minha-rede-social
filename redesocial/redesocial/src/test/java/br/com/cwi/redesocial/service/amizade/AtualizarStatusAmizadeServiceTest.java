@@ -6,7 +6,6 @@ import br.com.cwi.redesocial.domain.Amizade;
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.enums.StatusAmizade;
 import br.com.cwi.redesocial.factory.AmizadeFactory;
-import br.com.cwi.redesocial.factory.AtualizarStatusAmizadeRequestFactory;
 import br.com.cwi.redesocial.factory.UsuarioFactory;
 import br.com.cwi.redesocial.repository.AmizadeRepository;
 import br.com.cwi.redesocial.service.usuario.UsuarioAutenticadoService;
@@ -49,9 +48,13 @@ class AtualizarStatusAmizadeServiceTest {
 
     @BeforeEach
     void setUp() {
-        usuario = UsuarioFactory.criar(2L, "Maria", "maria@example.com");
+        usuario = UsuarioFactory.getUsuario();
+        usuario.setId(2L);
+        usuario.setNomeCompleto("Maria");
+        usuario.setEmail("maria@example.com");
+
         amizade = AmizadeFactory.criar();
-        request = AtualizarStatusAmizadeRequestFactory.criarParaAceitar();
+        request = AmizadeFactory.criarAtualizarRequest(1L, StatusAmizade.ACEITA);
     }
 
     @Test
@@ -78,7 +81,7 @@ class AtualizarStatusAmizadeServiceTest {
     @DisplayName("Deve atualizar status de amizade com sucesso para RECUSADA")
     void deveAtualizarStatusParaRecusadaComSucesso() {
         // Arrange
-        request = AtualizarStatusAmizadeRequestFactory.criarParaRecusar();
+        request = AmizadeFactory.criarAtualizarRequest(1L, StatusAmizade.RECUSADA);
         when(amizadeService.porId(request.getId())).thenReturn(amizade);
         when(usuarioAutenticadoService.get()).thenReturn(usuario);
         when(amizadeRepository.save(any(Amizade.class))).thenReturn(amizade);
@@ -105,9 +108,8 @@ class AtualizarStatusAmizadeServiceTest {
                 .when(atualizarStatusValidator).validar(amizade, usuario.getId(), request.getStatus());
 
         // Act & Assert
-        ResponseStatusException exception = assertThrows(ResponseStatusException.class, () -> {
-            atualizarStatusAmizadeService.atualizarStatus(request);
-        });
+        ResponseStatusException exception = assertThrows(ResponseStatusException.class,
+                () -> atualizarStatusAmizadeService.atualizarStatus(request));
 
         assertEquals(HttpStatus.CONFLICT, exception.getStatusCode());
         verify(amizadeRepository, never()).save(any());

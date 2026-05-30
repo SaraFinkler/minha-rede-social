@@ -6,7 +6,6 @@ import br.com.cwi.redesocial.domain.Amizade;
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.enums.StatusAmizade;
 import br.com.cwi.redesocial.factory.AmizadeFactory;
-import br.com.cwi.redesocial.factory.IncluirAmizadeRequestFactory;
 import br.com.cwi.redesocial.factory.UsuarioFactory;
 import br.com.cwi.redesocial.repository.AmizadeRepository;
 import br.com.cwi.redesocial.service.usuario.BuscarUsuarioService;
@@ -24,6 +23,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -56,9 +56,17 @@ class IncluirAmizadeServiceTest {
 
     @BeforeEach
     void setUp() {
-        solicitante = UsuarioFactory.criar(1L, "João", "joao@example.com");
-        destinatario = UsuarioFactory.criar(2L, "Maria", "maria@example.com");
-        request = IncluirAmizadeRequestFactory.criar(destinatario.getId());
+        solicitante = UsuarioFactory.getUsuario();
+        solicitante.setId(1L);
+        solicitante.setNomeCompleto("João");
+        solicitante.setEmail("joao@example.com");
+
+        destinatario = UsuarioFactory.getUsuario();
+        destinatario.setId(2L);
+        destinatario.setNomeCompleto("Maria");
+        destinatario.setEmail("maria@example.com");
+
+        request = AmizadeFactory.criarIncluirRequest(destinatario.getId());
     }
 
     @Test
@@ -90,8 +98,11 @@ class IncluirAmizadeServiceTest {
     @DisplayName("Deve reutilizar amizade recusada e voltar para PENDENTE")
     void deveReutilizarAmizadeRecusadaQuandoExistirRelacionamento() {
         // Arrange
-        Amizade amizadeRecusada = AmizadeFactory.criar(solicitante, destinatario, StatusAmizade.RECUSADA);
-        amizadeRecusada.setDataRespostaSolicitacao(java.time.LocalDateTime.now());
+        Amizade amizadeRecusada = AmizadeFactory.criar();
+        amizadeRecusada.setSolicitante(solicitante);
+        amizadeRecusada.setDestinatario(destinatario);
+        amizadeRecusada.setStatus(StatusAmizade.RECUSADA);
+        amizadeRecusada.setDataRespostaSolicitacao(LocalDateTime.now());
 
         when(usuarioAutenticadoService.get()).thenReturn(solicitante);
         when(buscarUsuarioService.porId(request.getDestinatarioId())).thenReturn(destinatario);
@@ -116,7 +127,7 @@ class IncluirAmizadeServiceTest {
     @DisplayName("Deve lançar BAD_REQUEST quando o usuário solicitar amizade com ele mesmo")
     void deveLancarBadRequestQuandoSolicitanteForODestinatario() {
         // Arrange
-        request = IncluirAmizadeRequestFactory.criar(solicitante.getId());
+        request = AmizadeFactory.criarIncluirRequest(solicitante.getId());
         when(usuarioAutenticadoService.get()).thenReturn(solicitante);
         when(buscarUsuarioService.porId(request.getDestinatarioId())).thenReturn(solicitante);
         doThrow(new ResponseStatusException(HttpStatus.BAD_REQUEST,

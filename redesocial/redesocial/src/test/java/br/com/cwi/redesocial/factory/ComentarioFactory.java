@@ -2,8 +2,6 @@ package br.com.cwi.redesocial.factory;
 
 import br.com.cwi.redesocial.controller.request.comentario.IncluirComentarioRequest;
 import br.com.cwi.redesocial.domain.Comentario;
-import br.com.cwi.redesocial.domain.Post;
-import br.com.cwi.redesocial.domain.Usuario;
 
 import java.time.LocalDateTime;
 
@@ -20,12 +18,8 @@ public class ComentarioFactory {
                 .id(3L)
                 .conteudo("Comentario do post")
                 .dataCriacao(LocalDateTime.of(2026, 5, 30, 10, 30))
-                .post(Post.builder()
-                        .id(1L)
-                        .build())
-                .usuario(Usuario.builder()
-                        .id(2L)
-                        .build())
+                .post(PostFactory.getPost())
+                .usuario(UsuarioFactory.getUsuario())
                 .build();
     }
 }

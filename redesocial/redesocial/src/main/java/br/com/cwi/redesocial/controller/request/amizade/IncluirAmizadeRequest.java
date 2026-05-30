@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
+@Setter
 public class IncluirAmizadeRequest {
     @NotNull
     private long destinatarioId;
