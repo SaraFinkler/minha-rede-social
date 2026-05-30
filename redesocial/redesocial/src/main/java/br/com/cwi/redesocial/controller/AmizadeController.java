@@ -4,7 +4,6 @@ import br.com.cwi.redesocial.controller.request.amizade.AtualizarStatusAmizadeRe
 import br.com.cwi.redesocial.controller.request.amizade.IncluirAmizadeRequest;
 import br.com.cwi.redesocial.controller.response.amizade.AmizadeResponse;
 import br.com.cwi.redesocial.controller.response.amizade.ListarAmizadeResponse;
-import br.com.cwi.redesocial.controller.response.usuario.UsuarioResponse;
 import br.com.cwi.redesocial.service.amizade.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,21 +31,12 @@ public class AmizadeController {
     private RemoverAmizadeService removerAmizadeService;
 
     @Autowired
-    private ObterPerfilAmigoService obterPerfilAmigoService;
-
-    @Autowired
     private AtualizarStatusAmizadeService atualizarStatusAmizadeService;
 
     @GetMapping("/amigos")
     @ResponseStatus(HttpStatus.OK)
     public Page<ListarAmizadeResponse> listarAmigos(@RequestParam(required = false, name = "q") String busca, Pageable pageable) {
         return listarAmigosService.listarAmigos(busca, pageable);
-    }
-
-    @GetMapping("/amigos/{amigoId}/perfil")
-    @ResponseStatus(HttpStatus.OK)
-    public UsuarioResponse obterPerfilAmigo(@PathVariable Long amigoId) {
-        return obterPerfilAmigoService.obterPerfil(amigoId);
     }
 
     @GetMapping("/pendentes")
