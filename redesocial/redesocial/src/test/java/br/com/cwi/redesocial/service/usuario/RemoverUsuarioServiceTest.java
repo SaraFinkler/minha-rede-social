@@ -39,23 +39,5 @@ class RemoverUsuarioServiceTest {
         verify(usuarioAutenticadoService, times(1)).get();
         verify(usuarioRepository, times(1)).delete(usuario);
     }
-
-    @Test
-    @DisplayName("Deve chamar o repositório delete com o usuário correto")
-    void deveCallRepositoryDeleteComUsuarioCorreto() {
-        // Arrange
-        Usuario usuario = UsuarioFactory.getUsuario();
-        usuario.setId(5L);
-        usuario.setEmail("teste@example.com");
-
-        when(usuarioAutenticadoService.get()).thenReturn(usuario);
-
-        // Act
-        removerUsuarioService.remover();
-
-        // Assert
-        verify(usuarioRepository, times(1)).delete(usuario);
-        verify(usuarioAutenticadoService, times(1)).get();
-    }
 }
 

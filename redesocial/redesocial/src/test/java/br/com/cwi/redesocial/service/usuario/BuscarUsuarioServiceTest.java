@@ -50,8 +50,8 @@ class BuscarUsuarioServiceTest {
     }
 
     @Test
-    @DisplayName("Deve lançar NOT_FOUND quando usuário por ID não existir")
-    void deveLancarNotFoundQuandoUsuarioPorIdNaoExistir() {
+    @DisplayName("Deve lançar NOT_FOUND quando usuário do ID selecionado não existir")
+    void deveLancarNotFoundQuandoUsuarioDoIdSelecionadoNaoExistir() {
         // Arrange
         long id = 999L;
         when(usuarioRepository.findById(id)).thenReturn(Optional.empty());
