@@ -1,4 +1,4 @@
-package br.com.cwi.redesocial.mapper.usuario;
+package br.com.cwi.redesocial.mapper.amizade;
 import br.com.cwi.redesocial.domain.Amizade;
 import br.com.cwi.redesocial.enums.StatusAmizade;
 

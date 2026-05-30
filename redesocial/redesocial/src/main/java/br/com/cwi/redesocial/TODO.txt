@@ -1,5 +1,24 @@
 FAZER:
 • Testes (services, validators e mappers)
+• Criar validators ok
+
+FELIPE:
+• Criar endpoint de auth
+• Ajustar envio de ids para o body
+
+• Verificar data de criação e alteração
+
+• Verificar sentido da existência dos Beans(@NotNull, e @NotEmpty) ok
+• Remover mensanges customizadas dos Beans(@NotNull, e @NotEmpty) ok
+
+
+SARA:
+• Ajustar pefil para aparece apenas o post da pessoa selecionada - ok
+• PERGUNTAR PRO MARIO SOBRE:
+    O tratamento de erros deve ser centralizado e retornar mensagens claras (payload padronizado para erros de validação e exceções não mapeadas).
+
+• Atualizar amizade pamonha - foda-se
+• Post visibilidade pamonha - desistoo
 
 FELIPE:
 • Verificar data de criação e alteração

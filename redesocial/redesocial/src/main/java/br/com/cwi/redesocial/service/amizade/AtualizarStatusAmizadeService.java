@@ -11,7 +11,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static br.com.cwi.redesocial.mapper.usuario.AmizadeMapper.toResponse;
+import static br.com.cwi.redesocial.mapper.amizade.AmizadeMapper.toResponse;
 
 @Service
 public class AtualizarStatusAmizadeService {

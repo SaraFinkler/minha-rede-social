@@ -16,8 +16,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static br.com.cwi.redesocial.mapper.usuario.AmizadeMapper.toResponse;
-import static br.com.cwi.redesocial.mapper.usuario.IncluirAmizadeMapper.toEntity;
+import static br.com.cwi.redesocial.mapper.amizade.AmizadeMapper.toResponse;
+import static br.com.cwi.redesocial.mapper.amizade.IncluirAmizadeMapper.toEntity;
 
 @Service
 public class IncluirAmizadeService {

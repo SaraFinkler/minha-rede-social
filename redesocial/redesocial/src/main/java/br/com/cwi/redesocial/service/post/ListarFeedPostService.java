@@ -2,7 +2,7 @@ package br.com.cwi.redesocial.service.post;
 
 import br.com.cwi.redesocial.controller.response.post.PostResponse;
 import br.com.cwi.redesocial.domain.Usuario;
-import br.com.cwi.redesocial.mapper.PostMapper;
+import br.com.cwi.redesocial.mapper.post.PostMapper;
 import br.com.cwi.redesocial.repository.PostRepository;
 import br.com.cwi.redesocial.service.usuario.BuscarUsuarioService;
 import br.com.cwi.redesocial.service.usuario.UsuarioAutenticadoService;

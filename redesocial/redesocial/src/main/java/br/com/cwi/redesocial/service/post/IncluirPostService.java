@@ -10,7 +10,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static br.com.cwi.redesocial.mapper.PostMapper.toResponse;
+import static br.com.cwi.redesocial.mapper.post.PostMapper.toResponse;
 import static br.com.cwi.redesocial.mapper.post.IncluirPostMapper.toEntity;
 
 @Service
