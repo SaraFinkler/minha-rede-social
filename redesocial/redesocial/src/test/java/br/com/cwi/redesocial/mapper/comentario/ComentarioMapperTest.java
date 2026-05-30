@@ -7,16 +7,22 @@ import br.com.cwi.redesocial.domain.Post;
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.factory.PostFactory;
 import br.com.cwi.redesocial.factory.UsuarioFactory;
-import br.com.cwi.redesocial.mapper.ComentarioMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static br.com.cwi.redesocial.factory.ComentarioFactory.getComentario;
 import static br.com.cwi.redesocial.factory.ComentarioFactory.getIncluirComentarioRequest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 public class ComentarioMapperTest {
+
+    @Test
+    @DisplayName("deve instanciar mapper")
+    void deveInstanciarMapper() {
+        assertNotNull(new ComentarioMapper());
+    }
 
     @Test
     @DisplayName("deve mapear request para entity")

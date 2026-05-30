@@ -8,8 +8,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class UsuarioMapperTest {
+
+    @Test
+    @DisplayName("deve instanciar mapper")
+    void deveInstanciarMapper() {
+        assertNotNull(new UsuarioMapper());
+    }
 
     @Test
     @DisplayName("deve mapear request para entity")

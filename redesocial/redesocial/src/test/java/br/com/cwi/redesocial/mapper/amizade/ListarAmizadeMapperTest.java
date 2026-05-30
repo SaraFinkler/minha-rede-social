@@ -6,8 +6,16 @@ import br.com.cwi.redesocial.factory.AmizadeFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ListarAmizadeMapperTest {
+
+    @Test
+    @DisplayName("deve instanciar mapper")
+    void deveInstanciarMapper() {
+        assertNotNull(new ListarAmizadeMapper());
+    }
+
     @Test
     @DisplayName("deve mapear response com destinatario quando usuario autenticado for solicitante")
     void deveMapearResponseComDestinatarioQuandoUsuarioAutenticadoForSolicitante() {

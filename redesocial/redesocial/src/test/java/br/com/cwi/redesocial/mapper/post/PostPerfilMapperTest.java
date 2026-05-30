@@ -7,8 +7,15 @@ import org.junit.jupiter.api.Test;
 
 import static br.com.cwi.redesocial.factory.PostFactory.getPost;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class PostPerfilMapperTest {
+
+    @Test
+    @DisplayName("deve instanciar mapper")
+    void deveInstanciarMapper() {
+        assertNotNull(new PostPerfilMapper());
+    }
 
     @Test
     @DisplayName("deve mapear entity para response")
