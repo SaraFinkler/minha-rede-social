@@ -1,6 +1,5 @@
 package br.com.cwi.redesocial.mapper.curtida;
 
-import br.com.cwi.redesocial.controller.request.curtida.CurtidaRequest;
 import br.com.cwi.redesocial.domain.Curtida;
 import br.com.cwi.redesocial.domain.Post;
 import br.com.cwi.redesocial.domain.Usuario;

@@ -6,7 +6,7 @@ import br.com.cwi.redesocial.domain.Comentario;
 import br.com.cwi.redesocial.domain.Post;
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.enums.VisibilidadePost;
-import br.com.cwi.redesocial.mapper.comentario.ComentarioMapper;
+import br.com.cwi.redesocial.mapper.ComentarioMapper;
 import br.com.cwi.redesocial.repository.ComentarioRepository;
 import br.com.cwi.redesocial.service.amizade.SaoAmigosService;
 import br.com.cwi.redesocial.service.post.PostService;
@@ -16,7 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import static br.com.cwi.redesocial.mapper.comentario.ComentarioMapper.toResponse;
+import static br.com.cwi.redesocial.mapper.ComentarioMapper.toResponse;
 
 @Service
 public class IncluirComentarioService {

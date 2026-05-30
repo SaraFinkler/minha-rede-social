@@ -1,6 +1,6 @@
 FAZER:
 • Testes (services, validators e mappers)
-• Criar validators
+• Criar validators ok
 
 FELIPE:
 • Criar endpoint de auth
@@ -8,8 +8,8 @@ FELIPE:
 
 • Verificar data de criação e alteração
 
-• Verificar sentido da existência dos Beans(@NotNull, e @NotEmpty)
-• Remover mensanges customizadas dos Beans(@NotNull, e @NotEmpty)
+• Verificar sentido da existência dos Beans(@NotNull, e @NotEmpty) ok
+• Remover mensanges customizadas dos Beans(@NotNull, e @NotEmpty) ok
 
 
 SARA:

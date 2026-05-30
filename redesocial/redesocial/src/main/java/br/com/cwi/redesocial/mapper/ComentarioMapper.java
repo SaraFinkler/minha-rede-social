@@ -1,4 +1,4 @@
-package br.com.cwi.redesocial.mapper.comentario;
+package br.com.cwi.redesocial.mapper;
 
 import br.com.cwi.redesocial.controller.request.comentario.IncluirComentarioRequest;
 import br.com.cwi.redesocial.controller.request.usuario.UsuarioRequest;

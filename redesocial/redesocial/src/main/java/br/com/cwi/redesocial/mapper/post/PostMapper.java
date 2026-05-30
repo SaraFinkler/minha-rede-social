@@ -1,4 +1,4 @@
-package br.com.cwi.redesocial.mapper;
+package br.com.cwi.redesocial.mapper.post;
 
 import br.com.cwi.redesocial.controller.response.post.PostResponse;
 import br.com.cwi.redesocial.domain.Post;
