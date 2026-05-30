@@ -2,7 +2,6 @@ package br.com.cwi.redesocial.service.amizade;
 
 import br.com.cwi.redesocial.domain.Amizade;
 import br.com.cwi.redesocial.domain.Usuario;
-import br.com.cwi.redesocial.enums.StatusAmizade;
 import br.com.cwi.redesocial.repository.AmizadeRepository;
 import br.com.cwi.redesocial.service.usuario.UsuarioAutenticadoService;
 import br.com.cwi.redesocial.validator.amizade.PermiteRemoverValidator;

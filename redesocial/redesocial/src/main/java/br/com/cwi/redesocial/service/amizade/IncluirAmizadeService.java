@@ -8,12 +8,11 @@ import br.com.cwi.redesocial.enums.StatusAmizade;
 import br.com.cwi.redesocial.repository.AmizadeRepository;
 import br.com.cwi.redesocial.service.usuario.BuscarUsuarioService;
 import br.com.cwi.redesocial.service.usuario.UsuarioAutenticadoService;
+import br.com.cwi.redesocial.validator.amizade.IncluirAmizadeValidator;
 import br.com.cwi.redesocial.validator.amizade.SolicitacaoAmizadeValidator;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -34,6 +33,9 @@ public class IncluirAmizadeService {
 
     @Autowired
     private SolicitacaoAmizadeValidator solicitacaoAmizadeValidator;
+
+    @Autowired
+    private IncluirAmizadeValidator incluirAmizadeValidator;
 
     @Transactional
     public AmizadeResponse incluir(IncluirAmizadeRequest request) {
@@ -58,12 +60,7 @@ public class IncluirAmizadeService {
 
             Amizade amizade = amizadeExistente.get();
 
-            if (amizade.getStatus() != StatusAmizade.RECUSADA) {
-                throw new ResponseStatusException(
-                        HttpStatus.CONFLICT,
-                        "Já existe amizade ou solicitação entre esses usuários"
-                );
-            }
+           incluirAmizadeValidator.validar(amizade.getStatus());
 
             amizade.setStatus(StatusAmizade.PENDENTE);
             amizade.setDataRespostaSolicitacao(null);

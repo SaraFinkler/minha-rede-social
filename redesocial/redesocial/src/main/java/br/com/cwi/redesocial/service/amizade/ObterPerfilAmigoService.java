@@ -27,7 +27,6 @@ public class ObterPerfilAmigoService {
         Usuario usuarioAutenticado = usuarioAutenticadoService.get();
         Usuario amigo = buscarUsuarioService.porId(amigoId);
 
-        // Verifica se existe amizade aceita entre os usuários
         boolean saoAmigos = amizadeRepository.ehAmigo(usuarioAutenticado.getId(), amigoId);
 
         if (!saoAmigos) {

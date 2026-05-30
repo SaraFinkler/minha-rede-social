@@ -20,10 +20,10 @@ public class ListarPendentesService {
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
     public Page<AmizadeResponse> listarPendentes(Pageable pageable) {
-
         Usuario usuario = usuarioAutenticadoService.get();
 
         return amizadeRepository
                 .listarAmizadesPendentes(usuario.getId(), pageable)
-                .map(AmizadeMapper::toResponse);    }
+                .map(AmizadeMapper::toResponse);
+    }
 }

@@ -16,6 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import static br.com.cwi.redesocial.mapper.comentario.ComentarioMapper.toResponse;
+
 @Service
 public class IncluirComentarioService {
     @Autowired
@@ -45,6 +47,6 @@ public class IncluirComentarioService {
         Comentario comentario = ComentarioMapper.toEntity(request, post, usuario);
         comentarioRepository.save(comentario);
 
-        return ComentarioMapper.toResponse(comentario);
+        return toResponse(comentario);
     }
 }

@@ -1,6 +1,5 @@
 package br.com.cwi.redesocial.service.usuario;
 
-import br.com.cwi.redesocial.controller.response.usuario.UsuarioResponse;
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
@@ -20,5 +19,4 @@ public class RemoverUsuarioService {
         Usuario usuarioLogado = usuarioAutenticadoService.get();
         usuarioRepository.delete(usuarioLogado);
     }
-
 }

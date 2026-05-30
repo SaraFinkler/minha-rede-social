@@ -8,12 +8,12 @@ import lombok.Setter;
 @Setter
 public class EditarUsarioRequest {
 
-    @Size(max = 255, message = "nomeCompleto deve conter no máximo 255 caracteres")
+    @Size(max = 255)
     private String nomeCompleto;
 
-    @Size(max = 50, message = "apelido deve conter no máximo 50 caracteres")
+    @Size(max = 50)
     private String apelido;
 
-    @Size(max = 512, message = "imagemPerfil deve conter no máximo 512 caracteres")
+    @Size(max = 512)
     private String imagemPerfil;
 }

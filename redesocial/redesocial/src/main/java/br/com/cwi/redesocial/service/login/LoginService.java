@@ -20,8 +20,10 @@ public class LoginService {
 
     @Autowired
     private BuscarUsuarioService buscarUsuarioService;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Autowired
     private JwtEncoder jwtEncoder;
 

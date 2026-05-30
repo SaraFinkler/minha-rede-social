@@ -4,7 +4,6 @@ import br.com.cwi.redesocial.controller.request.curtida.CurtidaRequest;
 import br.com.cwi.redesocial.domain.Curtida;
 import br.com.cwi.redesocial.domain.Post;
 import br.com.cwi.redesocial.domain.Usuario;
-import br.com.cwi.redesocial.enums.VisibilidadePost;
 import br.com.cwi.redesocial.repository.CurtidaRepository;
 import br.com.cwi.redesocial.service.amizade.SaoAmigosService;
 import br.com.cwi.redesocial.service.post.PostService;
@@ -21,6 +20,9 @@ public class RemoverCurtidaService {
     private PostService postService;
 
     @Autowired
+    private CurtidaService curtidaService;
+
+    @Autowired
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
     @Autowired
@@ -34,18 +36,8 @@ public class RemoverCurtidaService {
         Post post = postService.porId(request.getPostId());
         Usuario usuario = usuarioAutenticadoService.get();
 
-        boolean usuariosSaoAmigos = saoAmigosService.saoAmigos(usuario.getId(), post.getUsuario().getId());
-
-        if(post.getVisibilidade() == VisibilidadePost.PRIVADO && !usuariosSaoAmigos){
-            throw new ResponseStatusException(
-                    HttpStatus.FORBIDDEN, "Você precisa ser amigo deste usuário para interagir com ele");
-        }
-
-        boolean jaCurtiu = curtidaRepository.existsByUsuarioIdAndPostId(usuario.getId(), request.getPostId());
-
-        if (!jaCurtiu) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Você ainda não curtiu este post");
-        }
+        curtidaService.validarSeEhAmigo(usuario,post);
+        curtidaService.validarNaoCurtiu(usuario, post);
 
         Curtida curtida = curtidaRepository.findByUsuarioIdAndPostId(usuario.getId(), request.getPostId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Erro ao localizar curtida para deletar"));
