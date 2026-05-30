@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RestController
-@RequestMapping("/amizade")
+@RequestMapping("/amizades")
 public class AmizadeController {
 
     @Autowired

@@ -18,7 +18,7 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/posts")
 public class PostController {
 
     @Autowired
