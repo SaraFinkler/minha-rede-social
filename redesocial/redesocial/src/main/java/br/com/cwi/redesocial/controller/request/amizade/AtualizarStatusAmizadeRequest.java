@@ -11,6 +11,6 @@ public class AtualizarStatusAmizadeRequest {
     @NotNull
     private long id;
 
-    @NotNull(message = "status é obrigatório")
+    @NotNull
     private StatusAmizade status;
 }

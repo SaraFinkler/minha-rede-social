@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/comentario")
+@RequestMapping("/comentarios")
 public class ComentarioController {
 
     @Autowired

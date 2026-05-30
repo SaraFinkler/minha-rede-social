@@ -33,6 +33,9 @@ public class UsuarioController {
     @Autowired
     private ListarUsuariosService listarUsuariosService;
 
+    @Autowired
+    private CadastrarUsuarioService cadastrarUsuarioService;
+
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public UsuarioResponse obterUsuarioLogado() { return buscarUsuarioService.obterUsuarioLogado(); }
@@ -48,6 +51,12 @@ public class UsuarioController {
     @ResponseStatus(HttpStatus.OK)
     public UsuarioResponse buscarPorEmail(@RequestParam String email) {
         return buscarUsuarioService.buscarPorEmail(email);
+    }
+
+    @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
+    public UsuarioResponse cadastrar(@Valid @RequestBody UsuarioRequest request) {
+        return cadastrarUsuarioService.cadastrar(request);
     }
 
     @PutMapping()
