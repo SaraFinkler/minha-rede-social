@@ -16,9 +16,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
             select u
             from Usuario u
             where (:busca is null or :busca = ''
-                   or lower(u.nomeCompleto) like lower(concat('%', :busca, '%'))
-                   or lower(u.email) like lower(concat('%', :busca, '%')))
-            and u.id != :usuarioAutenticadoId
+                or lower(u.nomeCompleto) like lower(concat('%', :busca, '%'))
+                or lower(u.email) like lower(concat('%', :busca, '%')))
+                and u.id != :usuarioAutenticadoId
             """)
     Page<Usuario> buscarPorNomeOuEmail(@Param("busca") String busca, @Param("usuarioAutenticadoId") Long usuarioAutenticadoId, Pageable pageable);
 }

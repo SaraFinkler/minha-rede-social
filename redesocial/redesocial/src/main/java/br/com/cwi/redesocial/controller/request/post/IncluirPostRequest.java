@@ -10,11 +10,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class IncluirPostRequest {
-    @NotBlank(message = "conteudo é não pode ser vazio")
-    @NotNull(message = "conteudo é obrigatório")
-    @Size(max = 512, message = "conteudo deve conter no máximo 512 caracteres")
+    @NotBlank
+    @Size(max = 512)
     private String conteudo;
 
-    @NotNull(message = "visibilidade é obrigatório")
+    @NotNull
     private VisibilidadePost visibilidade;
 }

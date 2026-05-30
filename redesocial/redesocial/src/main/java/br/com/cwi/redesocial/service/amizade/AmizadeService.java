@@ -16,6 +16,6 @@ public class AmizadeService {
     public Amizade porId(long id) {
         return amizadeRepository
                 .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Amizade nao encontrado"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Amizade não encontrada"));
     }
 }

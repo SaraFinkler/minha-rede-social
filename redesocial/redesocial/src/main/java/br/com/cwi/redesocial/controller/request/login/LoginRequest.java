@@ -8,12 +8,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LoginRequest {
-
     @NotBlank
     @Email
     private String email;
 
-    @NotNull(message = "senha é obrigatória")
-    @NotBlank(message = "senha não pode ser vazia")
+    @NotBlank
     private String senha;
 }

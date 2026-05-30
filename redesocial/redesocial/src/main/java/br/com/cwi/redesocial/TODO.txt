@@ -14,11 +14,9 @@ FELIPE:
 
 
 SARA:
-• Ajustar pefil para aparece apenas o post da pessoa selecionada
+• Ajustar pefil para aparece apenas o post da pessoa selecionada - ok
 • PERGUNTAR PRO MARIO SOBRE:
     O tratamento de erros deve ser centralizado e retornar mensagens claras (payload padronizado para erros de validação e exceções não mapeadas).
 
-• Atualizar amizade pamonha
-• Post visibilidade pamonha
-
-• Não deve permitir o usuário de trocar a visibilidade de um post para a mesma visibilidade que ele já tem.
+• Atualizar amizade pamonha - foda-se
+• Post visibilidade pamonha - desistoo
