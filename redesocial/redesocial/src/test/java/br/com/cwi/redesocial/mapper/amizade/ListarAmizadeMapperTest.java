@@ -8,18 +8,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class ListarAmizadeMapperTest {
-
-    @Test
-    @DisplayName("deve instanciar mapper")
-    void deveInstanciarMapper() {
-        assertNotNull(new ListarAmizadeMapper());
-    }
-
+class ListarAmizadeMapperTest {
     @Test
     @DisplayName("deve mapear response com destinatario quando usuario autenticado for solicitante")
     void deveMapearResponseComDestinatarioQuandoUsuarioAutenticadoForSolicitante() {
-        Amizade amizade = AmizadeFactory.getAmizade();
+        Amizade amizade = AmizadeFactory.criar();
 
         ListarAmizadeResponse response =
                 ListarAmizadeMapper.toResponse(amizade, 1L);
@@ -38,7 +31,7 @@ public class ListarAmizadeMapperTest {
     @Test
     @DisplayName("deve mapear response com solicitante quando usuario autenticado for destinatario")
     void deveMapearResponseComSolicitanteQuandoUsuarioAutenticadoForDestinatario() {
-        Amizade amizade = AmizadeFactory.getAmizade();
+        Amizade amizade = AmizadeFactory.criar();
 
         ListarAmizadeResponse response =
                 ListarAmizadeMapper.toResponse(amizade, 2L);

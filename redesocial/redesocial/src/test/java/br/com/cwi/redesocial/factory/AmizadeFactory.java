@@ -1,43 +1,49 @@
 package br.com.cwi.redesocial.factory;
 
+import br.com.cwi.redesocial.controller.request.amizade.AtualizarStatusAmizadeRequest;
+import br.com.cwi.redesocial.controller.request.amizade.IncluirAmizadeRequest;
 import br.com.cwi.redesocial.domain.Amizade;
 import br.com.cwi.redesocial.domain.Usuario;
 import br.com.cwi.redesocial.enums.StatusAmizade;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-public class AmizadeFactory {
+public final class AmizadeFactory {
 
-    public static Amizade getAmizade() {
+    private AmizadeFactory() {
+    }
+
+    public static Amizade criar() {
         return Amizade.builder()
                 .id(1L)
+                .solicitante(criarUsuario(1L, "João", "joao@example.com"))
+                .destinatario(criarUsuario(2L, "Maria", "maria@example.com"))
                 .status(StatusAmizade.PENDENTE)
-                .solicitante(getSolicitante())
-                .destinatario(getDestinatario())
+                .dataCriacao(LocalDateTime.now())
+                .dataRespostaSolicitacao(null)
                 .build();
     }
 
-    private static Usuario getSolicitante() {
-        return Usuario.builder()
-                .id(1L)
-                .nomeCompleto("Solicitante")
-                .apelido("solicitante")
-                .email("solicitante@email.com")
-                .senha("123456")
-                .dataNascimento(LocalDate.of(2000, 1, 1))
-                .ativo(true)
-                .build();
+    private static Usuario criarUsuario(Long id, String nomeCompleto, String email) {
+        Usuario usuario = UsuarioFactory.getUsuario();
+        usuario.setId(id);
+        usuario.setNomeCompleto(nomeCompleto);
+        usuario.setEmail(email);
+        return usuario;
     }
 
-    private static Usuario getDestinatario() {
-        return Usuario.builder()
-                .id(2L)
-                .nomeCompleto("Destinatario")
-                .apelido("destinatario")
-                .email("destinatario@email.com")
-                .senha("123456")
-                .dataNascimento(LocalDate.of(2000, 1, 1))
-                .ativo(true)
-                .build();
+    // ===== Request Factories =====
+
+    public static IncluirAmizadeRequest criarIncluirRequest(long destinatarioId) {
+        IncluirAmizadeRequest request = new IncluirAmizadeRequest();
+        request.setDestinatarioId(destinatarioId);
+        return request;
+    }
+
+    public static AtualizarStatusAmizadeRequest criarAtualizarRequest(Long id, StatusAmizade status) {
+        AtualizarStatusAmizadeRequest request = new AtualizarStatusAmizadeRequest();
+        request.setId(id);
+        request.setStatus(status);
+        return request;
     }
 }

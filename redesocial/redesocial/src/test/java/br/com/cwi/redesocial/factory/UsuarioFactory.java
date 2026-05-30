@@ -4,17 +4,22 @@ import br.com.cwi.redesocial.controller.request.usuario.UsuarioRequest;
 import br.com.cwi.redesocial.domain.Usuario;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class UsuarioFactory {
+
     public static Usuario getUsuario() {
         return Usuario.builder()
                 .id(1L)
                 .nomeCompleto("Sara Finkler")
-                .apelido("sara")
                 .email("sara@email.com")
-                .senha("123456")
-                .dataNascimento(LocalDate.of(2000, 1, 1))
+                .apelido("sara")
+                .dataNascimento(LocalDate.of(1990, 1, 15))
+                .senha("senha123")
+                .imagemPerfil("https://example.com/imagem.jpg")
                 .ativo(true)
+                .dataCriacao(LocalDateTime.now())
+                .dataAlteracao(LocalDateTime.now())
                 .build();
     }
 

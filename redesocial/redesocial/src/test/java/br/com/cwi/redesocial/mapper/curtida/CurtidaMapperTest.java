@@ -1,14 +1,10 @@
 package br.com.cwi.redesocial.mapper.curtida;
 
 import br.com.cwi.redesocial.domain.Curtida;
-import br.com.cwi.redesocial.domain.Post;
-import br.com.cwi.redesocial.domain.Usuario;
-import br.com.cwi.redesocial.factory.UsuarioFactory;
+import br.com.cwi.redesocial.factory.CurtidaFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static br.com.cwi.redesocial.factory.CurtidaFactory.getPost;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 public class CurtidaMapperTest {
@@ -22,12 +18,11 @@ public class CurtidaMapperTest {
     @Test
     @DisplayName("deve mapear post e usuario para entity")
     void deveMapearPostEUsuarioParaEntity() {
-        Post post = getPost();
-        Usuario usuario = UsuarioFactory.getUsuario();
+        Curtida curtidaBase = CurtidaFactory.getCurtida();
 
-        Curtida curtida = CurtidaMapper.toEntity(post, usuario);
+        Curtida curtida = CurtidaMapper.toEntity(curtidaBase.getPost(), curtidaBase.getUsuario());
 
-        assertSame(post, curtida.getPost());
-        assertSame(usuario, curtida.getUsuario());
+        assertSame(curtidaBase.getPost(), curtida.getPost());
+        assertSame(curtidaBase.getUsuario(), curtida.getUsuario());
     }
 }

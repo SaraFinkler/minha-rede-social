@@ -19,7 +19,7 @@ class AmizadeMapperTest {
     @Test
     @DisplayName("deve mapear entity para response")
     void deveMapearEntityParaResponse() {
-        Amizade amizade = AmizadeFactory.getAmizade();
+        Amizade amizade = AmizadeFactory.criar();
 
         AmizadeResponse response = AmizadeMapper.toResponse(amizade);
 
