@@ -32,8 +32,6 @@ public final class AmizadeFactory {
         return usuario;
     }
 
-    // ===== Request Factories =====
-
     public static IncluirAmizadeRequest criarIncluirRequest(long destinatarioId) {
         IncluirAmizadeRequest request = new IncluirAmizadeRequest();
         request.setDestinatarioId(destinatarioId);
