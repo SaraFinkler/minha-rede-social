@@ -3,7 +3,6 @@ package br.com.cwi.redesocial.service.usuario;
 import br.com.cwi.redesocial.controller.request.usuario.EditarUsarioRequest;
 import br.com.cwi.redesocial.controller.response.usuario.UsuarioResponse;
 import br.com.cwi.redesocial.domain.Usuario;
-import br.com.cwi.redesocial.mapper.usuario.UsuarioMapper;
 import br.com.cwi.redesocial.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

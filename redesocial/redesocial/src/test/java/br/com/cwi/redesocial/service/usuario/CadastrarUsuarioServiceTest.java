@@ -13,6 +13,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -77,10 +79,11 @@ class CadastrarUsuarioServiceTest {
         when(usuarioRepository.findByEmail(request.getEmail())).thenReturn(Optional.of(UsuarioFactory.getUsuario()));
 
         // Act & Assert
-        RuntimeException exception = assertThrows(RuntimeException.class,
+        ResponseStatusException exception = assertThrows(ResponseStatusException.class,
                 () -> cadastrarUsuarioService.cadastrar(request));
 
-        assertEquals("Já existe um usuário cadastrado com o email informado.", exception.getMessage());
+        assertEquals(HttpStatus.CONFLICT, exception.getStatusCode());
+        assertEquals("Já existe um usuário cadastrado com o email informado.", exception.getReason());
         verify(usuarioRepository, times(1)).findByEmail(request.getEmail());
         verify(passwordEncoder, never()).encode(any());
         verify(usuarioRepository, never()).save(any());

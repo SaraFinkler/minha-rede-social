@@ -8,8 +8,7 @@ import lombok.*;
 @Setter
 @Getter
 public class ListarAmizadeResponse {
-    public Long id;
-    public String nomeAmigo;
-    public String emailAmigo;
-
+    private Long id;
+    private String nomeAmigo;
+    private String emailAmigo;
 }

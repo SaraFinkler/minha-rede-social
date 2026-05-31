@@ -3,7 +3,6 @@ package br.com.cwi.redesocial.controller;
 import br.com.cwi.redesocial.controller.request.comentario.IncluirComentarioRequest;
 import br.com.cwi.redesocial.controller.response.comentario.ComentarioResponse;
 import br.com.cwi.redesocial.service.comentario.*;
-import br.com.cwi.redesocial.service.post.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

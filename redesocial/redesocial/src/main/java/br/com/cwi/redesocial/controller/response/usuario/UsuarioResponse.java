@@ -3,7 +3,6 @@ package br.com.cwi.redesocial.controller.response.usuario;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Builder
 @NoArgsConstructor

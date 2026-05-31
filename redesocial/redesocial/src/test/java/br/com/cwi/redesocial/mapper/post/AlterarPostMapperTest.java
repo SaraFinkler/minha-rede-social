@@ -10,7 +10,7 @@ import static br.com.cwi.redesocial.factory.PostFactory.getPost;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class AlterarPostMapperTest {
+class AlterarPostMapperTest {
 
     @Test
     @DisplayName("deve instanciar mapper")

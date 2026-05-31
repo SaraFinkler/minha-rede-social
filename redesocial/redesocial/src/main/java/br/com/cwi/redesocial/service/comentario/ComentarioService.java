@@ -1,9 +1,7 @@
 package br.com.cwi.redesocial.service.comentario;
 
 import br.com.cwi.redesocial.domain.Comentario;
-import br.com.cwi.redesocial.domain.Post;
 import br.com.cwi.redesocial.repository.ComentarioRepository;
-import br.com.cwi.redesocial.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

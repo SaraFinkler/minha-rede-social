@@ -7,6 +7,9 @@ import br.com.cwi.redesocial.mapper.usuario.UsuarioMapper;
 import br.com.cwi.redesocial.repository.UsuarioRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import static org.springframework.http.HttpStatus.CONFLICT;
 
 @Service
 public class CadastrarUsuarioService {
@@ -22,7 +25,7 @@ public class CadastrarUsuarioService {
     public UsuarioResponse cadastrar(UsuarioRequest request){
 
         usuarioRepository.findByEmail(request.getEmail()).ifPresent(u -> {
-            throw new RuntimeException("Já existe um usuário cadastrado com o email informado.");
+            throw new ResponseStatusException(CONFLICT, "Já existe um usuário cadastrado com o email informado.");
         });
 
         Usuario usuario = UsuarioMapper.toEntity(request);

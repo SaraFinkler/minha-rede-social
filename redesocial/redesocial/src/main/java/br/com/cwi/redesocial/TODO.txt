@@ -1,24 +1,42 @@
 FAZER:
-• Testes (services, validators e mappers)
-• Criar validators ok
+• Criar Testes Para Validators
 
-FELIPE:
-• Criar endpoint de auth
-• Ajustar envio de ids para o body
+• Verificar Endpoints
+    Get /amizades/amigos
+    Get /amizades/pendentes
+    Post /amizades
+    Put /amizades
+    Delete /amizades/{id}
 
-• Verificar data de criação e alteração
+    Get /comentarios/{id}
+    Get /comentarios/post/{id}
+    Post /comentarios/{id}
+    Delete /comentarios/{id}
 
-• Verificar sentido da existência dos Beans(@NotNull, e @NotEmpty) ok
-• Remover mensanges customizadas dos Beans(@NotNull, e @NotEmpty) ok
+    Post /curtidas
+    Delete /curtidas
 
+    Post /login
 
-SARA:
-• Ajustar pefil para aparece apenas o post da pessoa selecionada - ok
-• PERGUNTAR PRO MARIO SOBRE:
-    O tratamento de erros deve ser centralizado e retornar mensagens claras (payload padronizado para erros de validação e exceções não mapeadas).
+    Get /posts
+    Get /posts/paginado
+    Get /posts/feed
+    Get /posts/perfil
+    Post /posts
+    Put /posts/{id}
+    Delete /posts/{id}
 
-• Atualizar amizade pamonha - foda-se
-• Post visibilidade pamonha - desistoo
+    Get /usuarios
+    Get /usuarios/listar
+    Get /usuarios/email
+    Post /usuarios
+    Put /usuarios
+    Put /usuarios/desativar
+    Delete /usuarios
 
-FELIPE:
-• Verificar data de criação e alteração
+• Mover dados sensíveis para variáveis de ambiente
+• Mudar para Base de Dados Local
+• Criar Docker Compose
+• Gerar Novo Postman Collection
+• Gerar Diagrama Para o Banco de Dados
+• Gerar Documentação

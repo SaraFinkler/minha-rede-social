@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public class ComentarioMapperTest {
+class ComentarioMapperTest {
 
     @Test
     @DisplayName("deve instanciar mapper")

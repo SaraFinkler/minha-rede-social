@@ -4,7 +4,6 @@ import br.com.cwi.redesocial.controller.request.curtida.CurtidaRequest;
 import br.com.cwi.redesocial.domain.Curtida;
 import br.com.cwi.redesocial.domain.Post;
 import br.com.cwi.redesocial.domain.Usuario;
-import br.com.cwi.redesocial.mapper.curtida.CurtidaMapper;
 import br.com.cwi.redesocial.repository.CurtidaRepository;
 import br.com.cwi.redesocial.service.amizade.SaoAmigosService;
 import br.com.cwi.redesocial.service.post.PostService;
